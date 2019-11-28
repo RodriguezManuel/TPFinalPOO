@@ -26,7 +26,7 @@ public abstract class Grid {
 	
 	protected abstract GameState newState();
 	protected abstract void fillCells();
-	
+
 	protected Cell[][] g() {
 		return g;
 	}

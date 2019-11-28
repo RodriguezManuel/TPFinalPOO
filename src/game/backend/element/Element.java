@@ -7,6 +7,8 @@ public abstract class Element {
 	public abstract boolean isMovable();
 	
 	public abstract String getKey();
+
+	public boolean isSpecial(){ return false; }
 	
 	public String getFullKey() {
 		return getKey();

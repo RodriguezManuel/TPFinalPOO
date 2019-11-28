@@ -7,7 +7,8 @@ import game.backend.element.Element;
 
 public class CandyGeneratorCell extends Cell {
 	
-	public CandyGeneratorCell(Grid grid) {
+	public CandyGeneratorCell(Grid grid)
+	{
 		super(grid);
 	}
 	
