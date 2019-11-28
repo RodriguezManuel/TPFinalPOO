@@ -10,7 +10,7 @@ public abstract class Element {
 
 	public boolean isSpecial(){ return false; }
 
-	public String label()
+	public String getLabel()
 	{
 		return "";
 	}

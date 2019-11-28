@@ -1,7 +1,6 @@
 package game.frontend;
 
 import game.backend.CandyGame;
-import game.backend.level.Level1;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -48,7 +47,6 @@ public class GameApp extends Application {
 
 		CandyGame game = new CandyGame(clazz);
 		CandyFrame frame = new CandyFrame(game);
-		window.setResizable(false);
 		Scene scene = new Scene(frame);
 
 		window.setScene(scene);

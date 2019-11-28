@@ -10,7 +10,7 @@ public class MovementCandy extends SpecialCandy
     }
 
     @Override
-    public String label()
+    public String getLabel()
     {
         return TEXT;
     }
