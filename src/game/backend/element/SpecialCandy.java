@@ -12,6 +12,11 @@ public abstract class SpecialCandy extends Candy
     }
 
 
+    public String getLabel()
+    {
+        return "";
+    }
+
     public int getTime() {
         return time;
     }

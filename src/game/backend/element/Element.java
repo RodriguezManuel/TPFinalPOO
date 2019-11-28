@@ -9,11 +9,6 @@ public abstract class Element {
 	public abstract String getKey();
 
 	public boolean isSpecial(){ return false; }
-
-	public String getLabel()
-	{
-		return "";
-	}
 	
 	public String getFullKey() {
 		return getKey();
