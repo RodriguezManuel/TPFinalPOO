@@ -33,8 +33,28 @@ public class AppMenu extends MenuBar {
                     "Implementación Original: Laura Zabaleta (POO 2013).");
             alert.showAndWait();
         });
-        help.getItems().add(aboutMenuItem);
-        getMenus().addAll(file, help);
+        Menu menuLevels = new Menu("Levels");
+        MenuItem[] levels = new MenuItem[3];
+        for(int i=0;i<3;i++)
+        {
+            levels[i]= new MenuItem("Level"+(i+1));
+            int finalI = i;
+            levels[i].setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Level"+ (finalI +1));
+                alert.setHeaderText("Ir a Level"+(finalI+1));
+                alert.setContentText("¿Está seguro que desea ir al level"+(finalI+1)+"?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if(result.isPresent()) {
+                    if (result.get() == ButtonType.OK) {
+                        //Platform.exit();
+
+                    }
+                }
+            });
+        }
+        menuLevels.getItems().addAll(levels);
+        getMenus().addAll(file, help,menuLevels);
     }
 
 }
