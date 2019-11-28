@@ -1,6 +1,7 @@
 package game.frontend;
 
 import game.backend.element.Element;
+import game.backend.element.SpecialCandy;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,20 +23,18 @@ public class BoardPanel extends TilePane {
 		setPrefTileWidth(cellSize);
 		this.cells = new StackPane[rows][columns];
 		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < columns; j++)
-			{
+			for (int j = 0; j < columns; j++) {
 				cells[i][j] = new StackPane();
 				getChildren().add(cells[i][j]);
 			}
 		}
 	}
 
-	public void setImage(int row, int column, Image image){
+	public void setImage(int row, int column, Image image) {
 		cells[row][column].getChildren().add(new ImageView(image));
 	}
 
-	public void setImage(int row, int column, Image image, Element elem)
-	{
+	public void setImage(int row, int column, Image image, Element elem) {
 		setImage(row, column, image);
 		if(elem.isSpecial()) {
 			DropShadow dropShadow = new DropShadow();
@@ -43,8 +42,7 @@ public class BoardPanel extends TilePane {
 			dropShadow.setOffsetX(3.0);
 			dropShadow.setOffsetY(3.0);
 			dropShadow.setColor(Color.ORANGERED);
-
-			Text text = new Text(elem.getLabel());
+			Text text = new Text( ((SpecialCandy ) elem).getLabel() ); // estoy seguro que es special pues entro al if
 			text.setFont(Font.font("Impact", FontWeight.BOLD, 40));
 			text.setFill(Color.BLACK);
 			text.setEffect(dropShadow);

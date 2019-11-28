@@ -1,16 +1,14 @@
 package game.backend.element;
 
-public class TimeCandy extends SpecialCandy
-{
+public class TimeBombCandy extends SpecialCandy {
     private static final String TEXT="10";
 
-    public TimeCandy(int time)
+    public TimeBombCandy(int time)
     {
         super(time);
     }
 
-    public void decrementTime()
-    {
+    public void decTimer() {
         if(!outOfTime())
         {
             time--;
@@ -19,7 +17,7 @@ public class TimeCandy extends SpecialCandy
 
     public boolean outOfTime()
     {
-        return time==0;
+        return time == 0;
     }
 
     @Override

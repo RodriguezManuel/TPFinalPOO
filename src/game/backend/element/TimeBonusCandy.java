@@ -1,10 +1,10 @@
 package game.backend.element;
 
-public class MovementCandy extends SpecialCandy
+public class TimeBonusCandy extends SpecialCandy
 {
     private static final String TEXT="+10";
 
-    public MovementCandy(int time)
+    public TimeBonusCandy(int time)
     {
         super(time);
     }

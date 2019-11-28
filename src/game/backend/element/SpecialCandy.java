@@ -1,14 +1,11 @@
 package game.backend.element;
 
-import java.sql.Time;
-
-public abstract class SpecialCandy extends Candy
-{
+public abstract class SpecialCandy extends Candy {
     protected int time;
 
     protected SpecialCandy(int time)
     {
-        this.time=time;
+        this.time = time;
     }
 
 
@@ -23,14 +20,13 @@ public abstract class SpecialCandy extends Candy
 
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         boolean result = super.equals(obj);
         boolean result2= false;
         if(result)
         {
             SpecialCandy timeCandy= (SpecialCandy) obj;
-            result2 = timeCandy.time==time;
+            result2 = timeCandy.time == time;
         }
         return result && result2;
     }
