@@ -1,15 +1,12 @@
 package game.backend.level;
 
 import game.backend.GameState;
-import game.backend.element.Candy;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Level2 extends SpecialLevel {
 
     private static final int MAX_SPECIAL_CANDY = 8;
-    private int spawnedSpecials = 0;
 
     public Level2(){
         super(MAX_SPECIAL_CANDY);
@@ -32,6 +29,14 @@ public class Level2 extends SpecialLevel {
         return new Level2State( quota );
     }
 
+    @Override
+    public void clearContent(int i, int j){
+        if( get( i, j ).isSpecial() ){
+            ((Level2State)state()).decSpecialsLeft();
+            ((Level2State)state()).removeTimeBomb( (TimeBombCandy)get(i, j) );
+        }
+    }
+
     private class Level2State extends SpecialLevelGameState{
         private List<TimeBombCandy> activeSpecials = new ArrayList<>(quota);
 
@@ -39,10 +44,8 @@ public class Level2 extends SpecialLevel {
             super( candyGoal );
         }
 
-        @Override
-        public void explodedSpecial( SpecialCandy explodedCandy ){
-            super.explodedSpecial( explodedCandy );
-            activeSpecials.remove( explodedCandy );
+        public void removeTimeBomb( TimeBombCandy candy ){
+            activeSpecials.remove( candy );
             if( !activeSpecials.isEmpty() ){
                 setCountdown( activeSpecials.get(0).getTimer() );
             }

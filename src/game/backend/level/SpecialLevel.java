@@ -1,10 +1,6 @@
 package game.backend.level;
 
 import game.backend.GameState;
-import game.backend.element.Candy;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class SpecialLevel extends Level {
 
@@ -45,7 +41,7 @@ public abstract class SpecialLevel extends Level {
             spawnedSpecials++;
         }
 
-        public void explodedSpecial( SpecialCandy explodedCandy ){
+        public void decSpecialsLeft(){
             specialsLeft--;
         };
 
