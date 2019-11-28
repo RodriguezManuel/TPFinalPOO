@@ -5,7 +5,7 @@ import game.backend.GameState;
 public class Level1 extends Level {
 	
 	private static int REQUIRED_SCORE = 5000; 
-	private static int MAX_MOVES = 20; 
+	private static int MAX_MOVES = 20;
 
 	@Override
 	protected GameState newState() {

@@ -1,5 +1,8 @@
 package game.frontend;
 
+import game.backend.level.Level1;
+import game.backend.level.Level2;
+import game.backend.level.Level3;
 import javafx.application.Platform;
 import javafx.scene.control.*;
 
@@ -37,24 +40,14 @@ public class AppMenu extends MenuBar {
         MenuItem[] levels = new MenuItem[3];
         for(int i=0;i<3;i++)
         {
-            levels[i]= new MenuItem("Level"+(i+1));
+            levels[i] = new MenuItem("Level"+(i+1));
             int finalI = i;
-            levels[i].setOnAction(event -> {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Level"+ (finalI +1));
-                alert.setHeaderText("Ir a Level"+(finalI+1));
-                alert.setContentText("¿Está seguro que desea ir al level"+(finalI+1)+"?");
-                Optional<ButtonType> result = alert.showAndWait();
-                if(result.isPresent()) {
-                    if (result.get() == ButtonType.OK) {
-                        //Platform.exit();
-
-                    }
-                }
-            });
         }
+        levels[0].setOnAction(event -> GameApp.restart(Level1.class)); // agregar alertas??
+        levels[1].setOnAction(event -> GameApp.restart(Level2.class));
+        levels[2].setOnAction(event -> GameApp.restart(Level3.class));
         menuLevels.getItems().addAll(levels);
-        getMenus().addAll(file, help,menuLevels);
+        getMenus().addAll(file, help, menuLevels);
     }
 
 }
