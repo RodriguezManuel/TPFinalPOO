@@ -7,8 +7,7 @@ import game.backend.cell.L2CandyGeneratorCell;
 import game.backend.element.CandyColor;
 import game.backend.element.TimeBombCandy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Level2 extends SpecialLevel {
 
@@ -27,6 +26,7 @@ public class Level2 extends SpecialLevel {
             int color = (int)(Math.random() * 6);
             TimeBombCandy aux = new TimeBombCandy( CandyColor.values()[color] );
             setContent( i, j, aux );
+            System.out.println(String.format("aux=%s",aux));
             addSpecial( aux );
         }
     }
@@ -41,7 +41,6 @@ public class Level2 extends SpecialLevel {
 
 //    @Override
 //    protected void removeFigure( int i, int j, Figure f ){
-//        super.removeFigure( i, j, f );
 //        if( noActive() ){
 //            int first = f.getPoints()[0].x;
 //            int last = f.getPoints()[ f.getPoints().length - 1].x;
@@ -50,6 +49,7 @@ public class Level2 extends SpecialLevel {
 //            int newJ = (( first <= 0 )? j + first : j); //explicar esto
 //            ((L2CandyGeneratorCell)(getCell( 0, newJ + delta ).getUpperCell())).enableForceSpecial();
 //        }
+//        super.removeFigure( i, j, f );
 //    }
 
     @Override
@@ -80,28 +80,33 @@ public class Level2 extends SpecialLevel {
         super.clearContent( i, j );
     }
 
+
+
+
+
+
     private class Level2State extends SpecialLevelGameState{
-        private List<TimeBombCandy> activeSpecials = new ArrayList<>(quota);
+        private Map<Integer, TimeBombCandy> activeSpecials = new TreeMap<>();
 
         public Level2State( int candyGoal ){
             super( candyGoal );
         }
 
         public void removeTimeBomb( TimeBombCandy candy ){
-            activeSpecials.remove( candy );
+            activeSpecials.remove( candy.getID() );
             if( !activeSpecials.isEmpty() ){
                 setCountdown( activeSpecials.get(0).getTimer() );
             }
         }
 
         public void decTimers(){
-            for( TimeBombCandy candy : activeSpecials ){
+            for( TimeBombCandy candy : activeSpecials.values() ){
                 candy.decTimer();
             }
         }
 
         public void add( TimeBombCandy candy ){
-            activeSpecials.add( candy );
+            activeSpecials.put( candy.getID(), candy );
         }
     }
 }
