@@ -43,12 +43,13 @@ public class Level2 extends SpecialLevel {
     @Override
     protected void removeFigure( int i, int j, Figure f ){
         if( noActive() ){
-            int first = f.getPoints()[0].x;
-            int last = f.getPoints()[ f.getPoints().length - 1].x;
-            int delta = Math.abs(last - first) + 1;
+            int first = f.getPoints()[0].y;
+            int last = f.getPoints()[ f.getPoints().length - 1].y;
+            int realFirst = (( first < 0 )? j + first : j );
+            int realLast = (( last > 0 )? j + last : j );
+            int delta = Math.abs(realLast - realFirst) + 1;
             int gen = ((int)(Math.random() * delta));
-            int newJ = (( first <= 0 )? j + first : j); //explicar esto
-            ((L2CandyGeneratorCell)(getCell( 0, newJ + gen ).getUpperCell())).enableForceSpecial();
+            ((L2CandyGeneratorCell)(getCell( 0, realLast + gen ).getUpperCell())).enableForceSpecial();
         }
         super.removeFigure( i, j, f );
     }

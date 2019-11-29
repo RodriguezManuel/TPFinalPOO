@@ -16,7 +16,7 @@ public abstract class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     @Override
     public Element getContent(){
         Element ret = super.getContent();
-        if( !((SpecialLevel)grid).quotaExceeded() && (int)(Math.random() * N ) == 0 ){ //si todavía se pueden generar caramelos especiales
+        if( !((SpecialLevel)grid).quotaExceeded() && (0*(int)(Math.random() * N )) != 0 ){ //si todavía se pueden generar caramelos especiales
             ((SpecialLevel)grid).incSpecial();                    //y el número generado da 0, se devuelve un caramelo especial
             return getSpecialCandy( ((Candy)ret) );
         }
