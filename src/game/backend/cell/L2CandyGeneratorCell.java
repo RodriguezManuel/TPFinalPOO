@@ -22,9 +22,9 @@ public class L2CandyGeneratorCell extends SpecialCandyGeneratorCell {
     public Element getContent(){
         Element ret = super.getContent();
         if( forceSpecial ){
+            forceSpecial = false;
             return getSpecialCandy( (Candy)ret );
         }
-        forceSpecial = false;
         return ret;
     }
 

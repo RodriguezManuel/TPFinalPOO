@@ -2,20 +2,20 @@ package game.backend.element;
 
 public class TimeBombCandy extends SpecialCandy {
     private static final int INIT = 10;
-    private static int ID = 0;
-    private int IDCandy;
+    private static int id = 0;
+    private int idCandy;
 
-    private int setID(){
-        return ID++;
+    private int setId(){
+        return id++;
     }
 
-    public int getID(){
-        return IDCandy;
+    public int getId(){
+        return idCandy;
     }
 
     public TimeBombCandy( CandyColor color ) {
         super(INIT, color);
-        IDCandy = setID();
+        idCandy = setId();
     }
 
     public void decTimer() {
