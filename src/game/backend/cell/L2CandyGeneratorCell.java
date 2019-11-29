@@ -30,7 +30,9 @@ public class L2CandyGeneratorCell extends SpecialCandyGeneratorCell {
 
     @Override
     protected Element getSpecialCandy( Candy candy ){
-        return new TimeBombCandy( candy.getColor() );
+        TimeBombCandy ret = new TimeBombCandy( candy.getColor() );
+        ((Level2)grid).addSpecial( ret );
+        return ret;
     }
 
 }

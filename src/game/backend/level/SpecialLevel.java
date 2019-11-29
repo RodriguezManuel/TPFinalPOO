@@ -14,7 +14,7 @@ public abstract class SpecialLevel extends Level {
         return quota <= ((SpecialLevelGameState)state()).getSpawnedSpecials();
     }
 
-    public void addSpecial(){
+    public void incSpecial(){
         ((SpecialLevelGameState)state()).incSpawnedSpecials();
     }
 

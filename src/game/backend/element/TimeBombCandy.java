@@ -7,6 +7,12 @@ public class TimeBombCandy extends SpecialCandy {
         super(INIT, color);
     }
 
+    @Override
+    public boolean equals( Object o ){
+        return this == o; //es necesario hacer esto, pues en la lista de timebombs activos de level2state sólo debo quitar
+    }                       //las referencias exactas de los timebombs removidos por el jugador, y la clase padre definio el equals
+                            //por lo cual el método remove de List va a usar el equals
+
     public void decTimer() {
         if(!outOfTime()) {
             timer--;
@@ -19,6 +25,6 @@ public class TimeBombCandy extends SpecialCandy {
 
     @Override
     public String getLabel() {
-        return Integer.toString(INIT);
+        return Integer.toString(timer);
     }
 }

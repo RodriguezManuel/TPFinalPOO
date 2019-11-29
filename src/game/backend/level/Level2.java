@@ -25,12 +25,13 @@ public class Level2 extends SpecialLevel {
             int i = (int)(Math.random() * SIZE);
             int j = (int)(Math.random() * SIZE);
             int color = (int)(Math.random() * 6);
-            setContent( i, j, new TimeBombCandy( CandyColor.values()[color] ));
+            TimeBombCandy aux = new TimeBombCandy( CandyColor.values()[color] );
+            setContent( i, j, aux );
+            addSpecial( aux );
         }
     }
 
     public void addSpecial( TimeBombCandy candy ){
-        addSpecial();
         ((Level2State)state()).add( candy );
     }
 
@@ -38,18 +39,18 @@ public class Level2 extends SpecialLevel {
         return ((Level2State)state()).activeSpecials.isEmpty();
     }
 
-    @Override
-    protected void removeFigure( int i, int j, Figure f ){
-        super.removeFigure( i, j, f );
-        if( noActive() ){
-            int first = f.getPoints()[0].x;
-            int last = f.getPoints()[ f.getPoints().length - 1].x;
-            int delta = Math.abs(last - first) + 1;
-            int gen = ((int)(Math.random() * delta));
-            int newJ = (( first <= 0 )? j + first : j); //explicar esto
-            ((L2CandyGeneratorCell)(getCell( 0, newJ + delta ).getUpperCell())).enableForceSpecial();
-        }
-    }
+//    @Override
+//    protected void removeFigure( int i, int j, Figure f ){
+//        super.removeFigure( i, j, f );
+//        if( noActive() ){
+//            int first = f.getPoints()[0].x;
+//            int last = f.getPoints()[ f.getPoints().length - 1].x;
+//            int delta = Math.abs(last - first) + 1;
+//            int gen = ((int)(Math.random() * delta));
+//            int newJ = (( first <= 0 )? j + first : j); //explicar esto
+//            ((L2CandyGeneratorCell)(getCell( 0, newJ + delta ).getUpperCell())).enableForceSpecial();
+//        }
+//    }
 
     @Override
     protected Cell getCandyGenerator(){
