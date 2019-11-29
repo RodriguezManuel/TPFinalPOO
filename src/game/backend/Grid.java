@@ -1,5 +1,6 @@
 package game.backend;
 
+import com.sun.istack.internal.NotNull;
 import game.backend.cell.Cell;
 import game.backend.element.Candy;
 import game.backend.element.CandyColor;
@@ -107,7 +108,7 @@ public abstract class Grid {
 		return null;
 	}
 	
-	private void removeFigure(int i, int j, Figure f) {
+	protected void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)get(i, j)).getColor();
 		if (f.hasReplacement()) {
 			setContent(i, j, f.generateReplacement(color));

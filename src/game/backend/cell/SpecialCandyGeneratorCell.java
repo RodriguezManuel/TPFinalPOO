@@ -17,12 +17,12 @@ public abstract class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     public Element getContent(){
         Element ret = super.getContent();
         if( !((SpecialLevel)grid).quotaExceeded() && ( 0 == (int)(Math.random() * N) ) ){ //si todavía se pueden generar caramelos especiales
-            Element aux = getSpecialCandy( ((Candy)ret).getColor() );                                       //y el número generado da 0, se devuelve un caramelo especial
+            Element aux = getSpecialCandy( ((Candy)ret) );                                       //y el número generado da 0, se devuelve un caramelo especial
             ((SpecialLevel)grid).addSpecial();
         }
         return ret;
     }
 
-    protected abstract Element getSpecialCandy( CandyColor base );
+    protected abstract Element getSpecialCandy( Candy base );
 
 }

@@ -23,6 +23,10 @@ public class Cell {
 		this.around[Direction.RIGHT.ordinal()] = right;
 	}
 
+	public Cell getUpperCell(){
+		return around[Direction.UP.ordinal()];
+	}
+
 	public boolean hasFloor() {
 		return !around[Direction.DOWN.ordinal()].isEmpty();
 	}
