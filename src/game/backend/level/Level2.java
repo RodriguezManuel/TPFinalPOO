@@ -1,8 +1,10 @@
 package game.backend.level;
 
 import game.backend.GameState;
+import game.backend.element.TimeBombCandy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Level2 extends SpecialLevel {
 
@@ -19,9 +21,11 @@ public class Level2 extends SpecialLevel {
 
     @Override
     public boolean tryMove( int i1, int i2, int j1, int j2 ){
-        if (super.tryMove( i1, i2, j1, j2 )){
+        boolean aux = super.tryMove( i1, i2, j1, j2 );
+        if (aux){
             ((Level2State)state()).decTimers();
         }
+        return aux;
     }
 
     @Override

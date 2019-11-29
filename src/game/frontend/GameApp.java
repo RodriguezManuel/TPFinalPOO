@@ -43,7 +43,7 @@ public class GameApp extends Application {
 		window.show();
 	}
 
-	public static void restart(Class<? extends Level> clazz)
+	public static void startLevel(Class<? extends Level> clazz)
 	{
 		window.close();
 

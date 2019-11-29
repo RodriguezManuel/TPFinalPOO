@@ -1,28 +1,24 @@
 package game.backend.element;
 
 public class TimeBombCandy extends SpecialCandy {
-    private static final String TEXT="10";
+    private static final int INIT = 10;
 
-    public TimeBombCandy(int time)
-    {
-        super(time);
+    public TimeBombCandy() {
+        super(INIT);
     }
 
     public void decTimer() {
-        if(!outOfTime())
-        {
-            time--;
+        if(!outOfTime()) {
+            timer--;
         }
     }
 
-    public boolean outOfTime()
-    {
-        return time == 0;
+    public boolean outOfTime() {
+        return timer == 0;
     }
 
     @Override
-    public String getLabel()
-    {
-        return TEXT;
+    public String getLabel() {
+        return Integer.toString(INIT);
     }
 }

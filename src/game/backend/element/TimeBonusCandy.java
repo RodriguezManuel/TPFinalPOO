@@ -2,16 +2,14 @@ package game.backend.element;
 
 public class TimeBonusCandy extends SpecialCandy
 {
-    private static final String TEXT="+10";
+    private static final int INIT = 10;
 
-    public TimeBonusCandy(int time)
-    {
-        super(time);
+    public TimeBonusCandy() {
+        super(INIT);
     }
 
     @Override
-    public String getLabel()
-    {
-        return TEXT;
+    public String getLabel() {
+        return "+" + INIT;
     }
 }

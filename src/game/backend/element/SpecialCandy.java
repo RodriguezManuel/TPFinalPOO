@@ -1,39 +1,37 @@
 package game.backend.element;
 
+import java.util.Objects;
+
 public abstract class SpecialCandy extends Candy {
-    protected int time;
+    protected int timer;
 
-    protected SpecialCandy(int time)
+    protected SpecialCandy(int timer)
     {
-        this.time = time;
+        this.timer = timer;
     }
 
+    abstract public String getLabel();
 
-    public String getLabel()
-    {
-        return "";
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-
-    @Override
-    public boolean equals(Object obj) {
-        boolean result = super.equals(obj);
-        boolean result2= false;
-        if(result)
-        {
-            SpecialCandy timeCandy= (SpecialCandy) obj;
-            result2 = timeCandy.time == time;
-        }
-        return result && result2;
+    public int getTimer() {
+        return timer;
     }
 
     @Override
-    public boolean isSpecial()
-    {
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SpecialCandy)) return false;
+        if (!super.equals(o)) return false;
+        SpecialCandy that = (SpecialCandy) o;
+        return getTimer() == that.getTimer();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getTimer());
+    }
+
+    @Override
+    public boolean isSpecial() {
         return true;
     }
 }
