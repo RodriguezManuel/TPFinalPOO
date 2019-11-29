@@ -48,7 +48,7 @@ public class Level2 extends SpecialLevel {
             int delta = Math.abs(last - first) + 1;
             int gen = ((int)(Math.random() * delta));
             int newJ = (( first <= 0 )? j + first : j); //explicar esto
-            ((L2CandyGeneratorCell)(getCell( 0, newJ + delta ).getUpperCell())).enableForceSpecial();
+            ((L2CandyGeneratorCell)(getCell( 0, newJ + gen ).getUpperCell())).enableForceSpecial();
         }
         super.removeFigure( i, j, f );
     }

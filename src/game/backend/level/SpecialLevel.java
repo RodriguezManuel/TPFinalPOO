@@ -20,13 +20,12 @@ public abstract class SpecialLevel extends Level {
 
     protected abstract class SpecialLevelGameState extends GameState {
 
-        private int candyGoal;
         private int countdown;
-        private int specialsLeft = candyGoal;
+        private int specialsLeft;
         private int spawnedSpecials = 0;
 
         protected SpecialLevelGameState( int candyGoal ){
-            this.candyGoal = candyGoal;
+            specialsLeft = candyGoal;
         }
 
         protected void setCountdown( int value ){
@@ -47,6 +46,7 @@ public abstract class SpecialLevel extends Level {
 
         @Override
         public boolean gameOver(){
+            System.out.println(specialsLeft);
             return playerWon() || countdown == 0;
         }
 
