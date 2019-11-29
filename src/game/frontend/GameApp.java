@@ -43,12 +43,12 @@ public class GameApp extends Application {
 		window.show();
 	}
 
-	public static void startLevel(Class<? extends Level> clazz)
+	public static void startLevel(Class<? extends Level> clazz, ScorePanel scorePanel)
 	{
 		window.close();
 
 		CandyGame game = new CandyGame(clazz);
-		CandyFrame frame = new CandyFrame(game);
+		CandyFrame frame = new CandyFrame(game,scorePanel);
 		Scene scene = new Scene(frame);
 
 		window.setScene(scene);
