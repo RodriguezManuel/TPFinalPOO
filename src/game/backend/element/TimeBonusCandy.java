@@ -4,8 +4,8 @@ public class TimeBonusCandy extends SpecialCandy
 {
     private static final int INIT = 10;
 
-    public TimeBonusCandy() {
-        super(INIT);
+    public TimeBonusCandy( CandyColor color ) {
+        super(INIT, color);
     }
 
     @Override

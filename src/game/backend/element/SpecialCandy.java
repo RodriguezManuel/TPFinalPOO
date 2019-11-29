@@ -5,8 +5,8 @@ import java.util.Objects;
 public abstract class SpecialCandy extends Candy {
     protected int timer;
 
-    protected SpecialCandy(int timer)
-    {
+    protected SpecialCandy(int timer, CandyColor color) {
+        super(color);
         this.timer = timer;
     }
 

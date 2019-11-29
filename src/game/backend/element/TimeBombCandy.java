@@ -3,8 +3,8 @@ package game.backend.element;
 public class TimeBombCandy extends SpecialCandy {
     private static final int INIT = 10;
 
-    public TimeBombCandy() {
-        super(INIT);
+    public TimeBombCandy( CandyColor color ) {
+        super(INIT, color);
     }
 
     public void decTimer() {

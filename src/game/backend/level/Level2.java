@@ -1,6 +1,8 @@
 package game.backend.level;
 
 import game.backend.GameState;
+import game.backend.cell.Cell;
+import game.backend.cell.L2CandyGeneratorCell;
 import game.backend.element.TimeBombCandy;
 
 import java.util.ArrayList;
@@ -17,6 +19,11 @@ public class Level2 extends SpecialLevel {
     public void addSpecial( TimeBombCandy candy ){
         addSpecial();
         ((Level2State)state()).add( candy );
+    }
+
+    @Override
+    protected Cell getCandyGenerator(){
+        return new L2CandyGeneratorCell( this );
     }
 
     @Override
