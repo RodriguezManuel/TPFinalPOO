@@ -26,7 +26,6 @@ public class Level2 extends SpecialLevel {
             int color = (int)(Math.random() * 6);
             TimeBombCandy aux = new TimeBombCandy( CandyColor.values()[color] );
             setContent( i, j, aux );
-            System.out.println(String.format("aux=%s",aux));
             addSpecial( aux );
         }
         ((Level2State)state()).updateCountdown();
@@ -42,6 +41,7 @@ public class Level2 extends SpecialLevel {
 
     @Override
     protected void removeFigure( int i, int j, Figure f ){
+        super.removeFigure( i, j, f );
         if( noActive() ){
             int first = f.getPoints()[0].y;
             int last = f.getPoints()[ f.getPoints().length - 1].y;
@@ -49,9 +49,8 @@ public class Level2 extends SpecialLevel {
             int realLast = (( last > 0 )? j + last : j );
             int delta = Math.abs(realLast - realFirst) + 1;
             int gen = ((int)(Math.random() * delta));
-            ((L2CandyGeneratorCell)(getCell( 0, realLast + gen ).getUpperCell())).enableForceSpecial();
+            ((L2CandyGeneratorCell)(getCell( 0, realFirst + gen ).getUpperCell())).enableForceSpecial();
         }
-        super.removeFigure( i, j, f );
     }
 
     @Override
@@ -60,12 +59,11 @@ public class Level2 extends SpecialLevel {
     }
 
     @Override
-    public boolean tryMove( int i1, int i2, int j1, int j2 ){
-        boolean aux = super.tryMove( i1, i2, j1, j2 );
-        if (aux){
-            ((Level2State)state()).decTimers();
-        }
-        return aux;
+    protected void executeInstructionsTryMove() {
+        ((Level2State)state()).decTimers();
+        super.executeInstructionsTryMove();
+        if(!noActive())
+            ((Level2State)state()).updateCountdown();
     }
 
     @Override

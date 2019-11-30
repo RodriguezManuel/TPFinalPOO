@@ -22,7 +22,7 @@ public abstract class Grid {
 	private Map<Cell, Point> gMap = new HashMap<>();
 	private GameState state;
 	private List<GameListener> listeners = new ArrayList<>();
-	private MoveMaker moveMaker;
+	protected MoveMaker moveMaker;
 	private FigureDetector figureDetector;
 	
 	protected abstract GameState newState();
@@ -82,19 +82,23 @@ public abstract class Grid {
 	public void setContent(int i, int j, Element e) {
 		g[i][j].setContent(e);
 	}
-	
+
 	public boolean tryMove(int i1, int j1, int i2, int j2) {
 		Move move = moveMaker.getMove(i1, j1, i2, j2);
 		swapContent(i1, j1, i2, j2);
 		if (move.isValid()) {
 			move.removeElements();
-			fallElements();
+			executeInstructionsTryMove();
 			return true;
 		} else {
 			swapContent(i1, j1, i2, j2);
 			return false;
 		}
-	}	
+	}
+
+	protected void executeInstructionsTryMove(){
+		fallElements();
+	}
 	
 	public Figure tryRemove(Cell cell) {
 		if (gMap.containsKey(cell)) {

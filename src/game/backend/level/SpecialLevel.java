@@ -46,7 +46,6 @@ public abstract class SpecialLevel extends Level {
 
         @Override
         public boolean gameOver(){
-            System.out.println(specialsLeft);
             return playerWon() || countdown == 0;
         }
 

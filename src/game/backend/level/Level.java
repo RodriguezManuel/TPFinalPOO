@@ -52,11 +52,8 @@ public abstract class Level extends Grid {
     }
 
     @Override
-    public boolean tryMove(int i1, int j1, int i2, int j2) {
-        boolean ret;
-        if (ret = super.tryMove(i1, j1, i2, j2)) {
-            state().addMove();
-        }
-        return ret;
+    protected void executeInstructionsTryMove() {
+        super.executeInstructionsTryMove();
+        state().addMove();
     }
 }
