@@ -22,7 +22,7 @@ public abstract class Grid {
 	private Map<Cell, Point> gMap = new HashMap<>();
 	private GameState state;
 	private List<GameListener> listeners = new ArrayList<>();
-	protected MoveMaker moveMaker;
+	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
 	
 	protected abstract GameState newState();

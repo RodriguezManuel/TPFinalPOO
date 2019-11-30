@@ -27,6 +27,7 @@ public class Level2 extends SpecialLevel {
             TimeBombCandy aux = new TimeBombCandy( CandyColor.values()[color] );
             setContent( i, j, aux );
             addSpecial( aux );
+            incSpecial();
         }
         ((Level2State)state()).updateCountdown();
     }
