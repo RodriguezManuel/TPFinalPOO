@@ -20,14 +20,19 @@ public class Level2 extends SpecialLevel {
     @Override
     public void initialize(){
         super.initialize();
-        if( noActive() ){
-            int i = (int)(Math.random() * SIZE);
-            int j = (int)(Math.random() * SIZE);
-            int color = (int)(Math.random() * 6);
-            TimeBombCandy aux = new TimeBombCandy( CandyColor.values()[color] );
-            setContent( i, j, aux );
-            addSpecial( aux );
-            incSpecial();
+        if( noActive() ){ //Si no se generó ningún caramelo especial al arrancar la partida, se crea uno de manera forzada
+            boolean flag = true;
+            int i = (int) (Math.random() * SIZE);
+            int j = (int) (Math.random() * SIZE);
+            for( int k = 0; flag; k++ ){
+                TimeBombCandy aux = new TimeBombCandy(CandyColor.values()[k]);
+                setContent(i, j, aux);
+                if( checkFigure(i,j) == null ){
+                    addSpecial(aux);
+                    incSpecial();
+                    flag = false;
+                }
+            }
         }
         ((Level2State)state()).updateCountdown();
     }

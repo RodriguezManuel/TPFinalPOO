@@ -28,7 +28,7 @@ public enum Figure {
 	F20(new Point[]{ new Point(0,-2), new Point(0,-1), new Point(-1,0), new Point(1,0)}, 197, WrappedCandy.class),
 	F1(new Point[]{new Point(0,1), new Point(0,2)}, 48),
 	F2(new Point[]{new Point(0,-1), new Point(0,1)}, 80),
-	F3(new Point[]{new Point(0,-1), new Point(0,-2)}, 192),
+	F3(new Point[]{new Point(0,-2), new Point(0,-1)}, 192),
 	F10(new Point[]{ new Point(1,0), new Point(2,0)}, 12),	
 	F11(new Point[]{ new Point(-1,0), new Point(1,0)}, 5),	
 	F12(new Point[]{ new Point(-2,0), new Point(-1,0)}, 3);

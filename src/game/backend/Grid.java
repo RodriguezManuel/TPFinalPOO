@@ -96,6 +96,10 @@ public abstract class Grid {
 		}
 	}
 
+	protected Figure checkFigure( int i, int j ){
+		return figureDetector.checkFigure( i, j );
+	}
+
 	protected void executeInstructionsTryMove(){
 		fallElements();
 	}
