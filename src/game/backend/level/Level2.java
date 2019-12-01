@@ -2,9 +2,12 @@ package game.backend.level;
 
 import game.backend.Figure;
 import game.backend.GameState;
+import game.backend.Grid;
 import game.backend.cell.Cell;
 import game.backend.cell.L2CandyGeneratorCell;
+import game.backend.cell.Level2Cell;
 import game.backend.element.CandyColor;
+import game.backend.element.SpecialCandy;
 import game.backend.element.TimeBombCandy;
 
 import java.util.*;
@@ -15,6 +18,11 @@ public class Level2 extends SpecialLevel {
 
     public Level2(){
         super(MAX_SPECIAL_CANDY);
+    }
+
+    @Override
+    protected void assignCell(int i, int j) {
+        setGridCell(i, j, new Level2Cell(this));
     }
 
     @Override
@@ -83,9 +91,16 @@ public class Level2 extends SpecialLevel {
             ((Level2State)state()).decSpecialsLeft();
             ((Level2State)state()).removeTimeBomb( (TimeBombCandy)get(i, j) );
         }
-        super.clearContent( i, j );
+        ((Level2Cell)getCell(i, j)).clearContent();
     }
 
+    @Override
+    public void removeSpecial(SpecialCandy candy){
+
+        ((Level2State)state()).decSpecialsLeft();
+        ((Level2State)state()).removeTimeBomb( (TimeBombCandy) candy );
+
+    }
 
     private class Level2State extends SpecialLevelGameState{
         private TreeMap<Integer, TimeBombCandy> activeSpecials = new TreeMap<>();

@@ -32,4 +32,5 @@ public class TimeBombCandy extends SpecialCandy {
     public String getLabel() {
         return Integer.toString(timer);
     }
+
 }

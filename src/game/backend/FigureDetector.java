@@ -42,14 +42,7 @@ public class FigureDetector {
 	}
 	
 	public void removeFigure(int i, int j, Figure f) {
-		CandyColor color = ((Candy)grid.get(i, j)).getColor();
-		grid.clearContent(i, j);
-		if (f.hasReplacement()) {
-			grid.setContent(i, j, f.generateReplacement(color));
-		}
-		for (Point p: f.getPoints()) {
-			grid.clearContent(i + p.x, j + p.y);
-		}
+		grid.removeFigure( i, j, f);
 	}
 	
 }

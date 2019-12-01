@@ -55,4 +55,5 @@ public class Candy extends Element {
 	public long getScore() {
 		return 50;
 	}
+
 }

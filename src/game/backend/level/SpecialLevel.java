@@ -1,6 +1,9 @@
 package game.backend.level;
 
 import game.backend.GameState;
+import game.backend.element.Element;
+import game.backend.element.SpecialCandy;
+import game.backend.element.TimeBombCandy;
 
 public abstract class SpecialLevel extends Level {
 
@@ -17,6 +20,9 @@ public abstract class SpecialLevel extends Level {
     public void incSpecial(){
         ((SpecialLevelGameState)state()).incSpawnedSpecials();
     }
+
+    //
+    public abstract void removeSpecial(SpecialCandy content);
 
     protected abstract class SpecialLevelGameState extends GameState {
 

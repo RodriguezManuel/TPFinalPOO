@@ -24,7 +24,7 @@ public abstract class Grid {
 	private List<GameListener> listeners = new ArrayList<>();
 	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
-	
+
 	protected abstract GameState newState();
 	protected abstract void fillCells();
 
@@ -41,13 +41,21 @@ public abstract class Grid {
 		figureDetector = new FigureDetector(this);
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
-				g[i][j] = new Cell(this);
+				assignCell(i, j);
 				gMap.put(g[i][j], new Point(i,j));
 			}
 		}
 		fillCells();
 		fallElements();
-	}	
+	}
+
+	protected void assignCell(int i, int j){
+		setGridCell(i, j, new Cell(this));
+	}
+
+	protected void setGridCell(int i, int j, Cell cell){
+		g[i][j] = cell;
+	}
 
 	public Element get(int i, int j) {
 		return g[i][j].getContent();

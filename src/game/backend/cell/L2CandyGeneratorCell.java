@@ -9,19 +9,25 @@ import game.backend.level.Level2;
 public class L2CandyGeneratorCell extends SpecialCandyGeneratorCell {
 
     private boolean forceSpecial = false;
+    private static boolean alreadyForcing = false;
 
     public L2CandyGeneratorCell(Level2 lvl){
         super( lvl );
     }
 
     public void enableForceSpecial(){
+        if(alreadyForcing)
+            return;
+
         forceSpecial = true;
+        alreadyForcing = true;
     }
 
     @Override
     public Element getContent(){
         Element ret = super.getContent();
         if( forceSpecial ){
+            alreadyForcing = false;
             forceSpecial = false;
             return getSpecialCandy( (Candy)ret );
         }
