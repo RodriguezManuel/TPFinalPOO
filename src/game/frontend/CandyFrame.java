@@ -8,6 +8,8 @@ import game.backend.element.Element;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -23,15 +25,16 @@ public class CandyFrame extends VBox {
 	private Point2D lastPoint;
 	private CandyGame game;
 
-	public CandyFrame(CandyGame game,ScorePanel levelScorePanel) {
+	public CandyFrame(CandyGame game, ScorePanel levelScorePanel, AppMenu menu) {
 		this.game = game;
-		getChildren().add(new AppMenu());
+		getChildren().add(menu);
 		images = new ImageManager();
 		boardPanel = new BoardPanel(game.getSize(), game.getSize(), CELL_SIZE);
 		getChildren().add(boardPanel);
 		scorePanel = levelScorePanel;
 		getChildren().add(scorePanel);
 		game.initGame();
+		scorePanel.setGrid(game.getGrid());
 		GameListener listener;
 		game.addGameListener(listener = new GameListener() {
 			@Override
@@ -78,7 +81,7 @@ public class CandyFrame extends VBox {
 							message = message + " Finished - Loser !";
 						}
 					}
-					scorePanel.updateScore(message);
+					scorePanel.updateData(message);
 					lastPoint = null;
 				}
 			}
