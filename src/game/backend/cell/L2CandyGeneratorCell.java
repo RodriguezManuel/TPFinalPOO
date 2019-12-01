@@ -27,6 +27,9 @@ public class L2CandyGeneratorCell extends SpecialCandyGeneratorCell {
     public Element getContent(){
         Element ret = super.getContent();
         if( forceSpecial ){
+            if( !ret.isSpecial() ){
+                ((Level2)grid).incSpecial();
+            }
             alreadyForcing = false;
             forceSpecial = false;
             return getSpecialCandy( (Candy)ret );

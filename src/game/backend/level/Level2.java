@@ -2,7 +2,6 @@ package game.backend.level;
 
 import game.backend.Figure;
 import game.backend.GameState;
-import game.backend.Grid;
 import game.backend.cell.Cell;
 import game.backend.cell.L2CandyGeneratorCell;
 import game.backend.cell.Level2Cell;
@@ -58,7 +57,7 @@ public class Level2 extends SpecialLevel {
     @Override
     protected void removeFigure( int i, int j, Figure f ){
         super.removeFigure( i, j, f );
-        if( noActive() ){
+        if( noActive() && !quotaExceeded() ){
             int first = f.getPoints()[0].y;
             int last = f.getPoints()[ f.getPoints().length - 1].y;
             int realFirst = (( first < 0 )? j + first : j );

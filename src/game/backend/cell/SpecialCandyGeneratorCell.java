@@ -6,7 +6,7 @@ import game.backend.element.Element;
 import game.backend.level.SpecialLevel;
 
 public abstract class SpecialCandyGeneratorCell extends CandyGeneratorCell {
-    private static final int N = 1000000; //Determina la frecuencia de generación de caramelos con propiedades especiales (números encima)
+    private static final int N = 40; //Determina la frecuencia de generación de caramelos con propiedades especiales (números encima)
                                     //Mientras mayor el N, menos frecuente es la generación con el pasar de los turnos
 
     protected SpecialCandyGeneratorCell( SpecialLevel lvl ){
@@ -16,7 +16,7 @@ public abstract class SpecialCandyGeneratorCell extends CandyGeneratorCell {
     @Override
     public Element getContent(){
         Element ret = super.getContent();
-        if( !((SpecialLevel)grid).quotaExceeded() && (0*(int)(Math.random() * N )) == 0 ){ //si todavía se pueden generar caramelos especiales
+        if( !((SpecialLevel)grid).quotaExceeded() && ((int)(Math.random() * N )) == 0 ){ //si todavía se pueden generar caramelos especiales
             ((SpecialLevel)grid).incSpecial();                    //y el número generado da 0, se devuelve un caramelo especial
             return getSpecialCandy( ((Candy)ret) );
         }

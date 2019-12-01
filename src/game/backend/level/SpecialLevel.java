@@ -60,8 +60,6 @@ public abstract class SpecialLevel extends Level {
 
         @Override
         public boolean gameOver(){
-            System.out.println("spawnedSpecials = "+ spawnedSpecials);
-            System.out.println("specialsLeft = " + specialsLeft);
             return playerWon() || countdown == 0;
         }
 
