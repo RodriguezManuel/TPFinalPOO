@@ -13,6 +13,7 @@ public class Level2Cell extends Cell {
     public void clearContent() {
         if(getContent().isSpecial())
             ((Level2)grid).removeSpecial((TimeBombCandy) getContent());
+
         super.clearContent();
     }
 }

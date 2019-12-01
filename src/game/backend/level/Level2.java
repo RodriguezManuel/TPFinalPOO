@@ -88,20 +88,9 @@ public class Level2 extends SpecialLevel {
     }
 
     @Override
-    public void clearContent(int i, int j){
-        if( get( i, j ).isSpecial() ){
-            ((Level2State)state()).decSpecialsLeft();
-            ((Level2State)state()).removeTimeBomb( (TimeBombCandy)get(i, j) );
-        }
-        ((Level2Cell)getCell(i, j)).clearContent();
-    }
-
-    @Override
     public void removeSpecial(SpecialCandy candy){
-
         ((Level2State)state()).decSpecialsLeft();
         ((Level2State)state()).removeTimeBomb( (TimeBombCandy) candy );
-
     }
 
     private class Level2State extends SpecialLevelGameState{
