@@ -21,7 +21,6 @@ public abstract class SpecialLevel extends Level {
         ((SpecialLevelGameState)state()).incSpawnedSpecials();
     }
 
-
     public int getCountdown(){
         return ((SpecialLevelGameState)state()).getCountdown();
     }
