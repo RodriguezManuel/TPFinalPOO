@@ -21,8 +21,10 @@ public abstract class SpecialLevel extends Level {
         ((SpecialLevelGameState)state()).incSpawnedSpecials();
     }
 
-    //
-    public abstract void removeSpecial(SpecialCandy content);
+
+    public int getCountdown(){
+        return ((SpecialLevelGameState)state()).getCountdown();
+    }
 
     protected abstract class SpecialLevelGameState extends GameState {
 
@@ -68,6 +70,9 @@ public abstract class SpecialLevel extends Level {
             return specialsLeft == 0;
         }
 
+        public int getCountdown(){
+            return countdown;
+        }
     }
 
 }
