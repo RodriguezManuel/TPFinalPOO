@@ -38,6 +38,10 @@ public abstract class SpecialLevel extends Level {
             countdown = value;
         };
 
+        protected void setSpawnedSpecials( int value ){
+            spawnedSpecials = value;
+        }
+
         public int getSpawnedSpecials(){
             return spawnedSpecials;
         }
@@ -46,12 +50,18 @@ public abstract class SpecialLevel extends Level {
             spawnedSpecials++;
         }
 
+        protected void setSpecialsLeft( int value ){
+            specialsLeft = value;
+        }
+
         public void decSpecialsLeft(){
             specialsLeft--;
         };
 
         @Override
         public boolean gameOver(){
+            System.out.println("spawnedSpecials = "+ spawnedSpecials);
+            System.out.println("specialsLeft = " + specialsLeft);
             return playerWon() || countdown == 0;
         }
 

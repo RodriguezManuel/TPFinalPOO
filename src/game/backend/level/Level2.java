@@ -42,6 +42,8 @@ public class Level2 extends SpecialLevel {
                 }
             }
         }
+        ((Level2State)state()).resetSpawnedSpecials();
+        ((Level2State)state()).resetSpecialsLeft();
         ((Level2State)state()).updateCountdown();
     }
 
@@ -107,6 +109,14 @@ public class Level2 extends SpecialLevel {
 
         public Level2State( int candyGoal ){
             super( candyGoal );
+        }
+
+        protected void resetSpecialsLeft(){
+            setSpecialsLeft( quota );
+        }
+
+        public void resetSpawnedSpecials(){
+            setSpawnedSpecials( activeSpecials.size() );
         }
 
         public void updateCountdown(){
