@@ -86,7 +86,6 @@ public class Level2 extends SpecialLevel {
         return new Level2State( quota );
     }
 
-    @Override
     public void removeSpecial(SpecialCandy candy){
         ((Level2State)state()).decSpecialsLeft();
         ((Level2State)state()).removeTimeBomb( (TimeBombCandy) candy );
