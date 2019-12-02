@@ -2,7 +2,7 @@ package game.backend.cell;
 
 import game.backend.Grid;
 import game.backend.element.TimeCandy;
-import game.backend.level.Level2;
+import game.backend.level.TimeLevel;
 
 public class TimeCell extends Cell {
     public TimeCell(Grid grid) {
@@ -12,7 +12,7 @@ public class TimeCell extends Cell {
     @Override
     public void clearContent() {
         if(getContent().isSpecial())
-            ((Level2)grid).removeSpecial((TimeCandy) getContent());
+            ((TimeLevel)grid).removeSpecial((TimeCandy) getContent());
 
         super.clearContent();
     }

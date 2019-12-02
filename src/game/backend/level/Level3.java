@@ -1,6 +1,8 @@
 package game.backend.level;
 
 import game.backend.GameState;
+import game.backend.cell.Cell;
+import game.backend.cell.L3CandyGeneratorCell;
 import game.backend.element.TimeCandy;
 import game.backend.element.TimeBonusCandy;
 
@@ -12,14 +14,18 @@ public class Level3 extends TimeLevel {
        super( MAX_SPECIAL_CANDY );
    }
 
-   public void removeSpecial( TimeCandy candy ){
-       ((Level3State)state()).decSpecialsLeft();
-       ((Level3State)state()).removeTimeBonus( (TimeBonusCandy) candy );
-   }
+   public int getAndDecCountdown(){
+       return ((Level3State)state()).getAndDecCountdown();
+    }
 
     @Override
     protected GameState newState() {
         return new Level3State( quota );
+    }
+
+    @Override
+    protected Cell getCandyGenerator(){
+       return new L3CandyGeneratorCell( this );
     }
 
     protected class Level3State extends SpecialLevelGameState{
@@ -28,6 +34,15 @@ public class Level3 extends TimeLevel {
            super(candyGoal);
            setCountdown(INIT_TIME);
        }
+
+        public int getAndDecCountdown(){
+            int aux = getCountdown();
+            if(aux == 0)
+                return aux;
+
+            setCountdown(aux - 1);
+            return getCountdown();
+        }
 
        private void incCountdown( int time ){
            setCountdown( getCountdown() + time );

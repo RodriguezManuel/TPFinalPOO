@@ -1,5 +1,6 @@
 package game.frontend;
 
+import game.backend.level.Level3;
 import game.backend.level.TimeLevel;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -38,7 +39,7 @@ public class L3ScorePanel extends ScorePanel {
     }
 
     private String getTime(){
-        return Integer.toString( ((TimeLevel)grid).getCountdown() );
+        return Integer.toString( ((Level3)grid).getAndDecCountdown() );
     }
 
 }
