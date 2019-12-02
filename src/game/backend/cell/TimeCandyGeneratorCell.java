@@ -15,8 +15,8 @@ public abstract class TimeCandyGeneratorCell extends CandyGeneratorCell {
     @Override
     public Element getContent(){
         Element ret = super.getContent();
-        if( !((TimeLevel)grid).quotaExceeded() && ((int)(Math.random() * N )) == 0 ){ //si todavía se pueden generar caramelos especiales
-            ((TimeLevel)grid).incSpecial();                    //y el número generado da 0, se devuelve un caramelo especial
+        if( !((TimeLevel)getGrid()).quotaExceeded() && ((int)(Math.random() * N )) == 0 ){ //si todavía se pueden generar caramelos especiales
+            ((TimeLevel)getGrid()).incSpecial();                    //y el número generado da 0, se devuelve un caramelo especial
             return getSpecialCandy( ((Candy)ret) );
         }
         return ret;
