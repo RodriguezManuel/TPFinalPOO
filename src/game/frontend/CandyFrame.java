@@ -7,12 +7,18 @@ import game.backend.element.Element;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -86,6 +92,13 @@ public class CandyFrame extends VBox {
 								message = message + " Finished - Loser !";
 							}
 							flagNotOver = false;
+							Pane pane = new Pane();
+							Canvas canvas = new Canvas(game.getSize() * CELL_SIZE,  game.getSize() * CELL_SIZE );
+							pane.getChildren().add(canvas);
+							getChildren().add(pane);
+							pane.setStyle("-fx-background-color: #5490ff");
+							getChildren().remove( boardPanel );
+							scorePanel.setTop( pane );
 						}
 						scorePanel.updateData(message);
 						lastPoint = null;
