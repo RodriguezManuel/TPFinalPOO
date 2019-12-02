@@ -17,15 +17,6 @@ public abstract class SpecialCandy extends Candy {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SpecialCandy)) return false;
-        if (!super.equals(o)) return false;
-        SpecialCandy that = (SpecialCandy) o;
-        return getTimer() == that.getTimer();
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getTimer());
     }

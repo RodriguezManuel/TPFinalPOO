@@ -3,6 +3,8 @@ package game.backend.cell;
 import game.backend.Grid;
 import game.backend.element.Element;
 import game.backend.element.Nothing;
+import game.backend.element.TimeBombCandy;
+import game.backend.level.Level2;
 import game.backend.move.Direction;
 
 public class Cell {
@@ -21,6 +23,10 @@ public class Cell {
 		this.around[Direction.DOWN.ordinal()] = down;
 		this.around[Direction.LEFT.ordinal()] = left;
 		this.around[Direction.RIGHT.ordinal()] = right;
+	}
+
+	public Cell getUpperCell(){
+		return around[Direction.UP.ordinal()];
 	}
 
 	public boolean hasFloor() {

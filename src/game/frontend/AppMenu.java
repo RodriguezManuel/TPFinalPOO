@@ -43,9 +43,9 @@ public class AppMenu extends MenuBar {
             levels[i] = new MenuItem("Level"+(i+1));
             int finalI = i;
         }
-        levels[0].setOnAction(event -> GameApp.startLevel(Level1.class)); // agregar alertas??
-        levels[1].setOnAction(event -> GameApp.startLevel(Level2.class));
-        levels[2].setOnAction(event -> GameApp.startLevel(Level3.class));
+        levels[0].setOnAction(event -> GameApp.startLevel(Level1.class, new L1ScorePanel(), this)); // agregar alertas??
+        levels[1].setOnAction(event -> GameApp.startLevel(Level2.class,new L2ScorePanel(), this));
+        levels[2].setOnAction(event -> GameApp.startLevel(Level3.class,new L3ScorePanel(), this));
         menuLevels.getItems().addAll(levels);
         getMenus().addAll(file, help, menuLevels);
     }

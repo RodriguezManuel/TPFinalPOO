@@ -40,7 +40,7 @@ public class Candy extends Element {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String getFullKey() {
 		return color.toString() + "-CANDY";
@@ -55,4 +55,5 @@ public class Candy extends Element {
 	public long getScore() {
 		return 50;
 	}
+
 }

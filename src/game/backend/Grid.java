@@ -1,5 +1,6 @@
 package game.backend;
 
+import com.sun.istack.internal.NotNull;
 import game.backend.cell.Cell;
 import game.backend.element.Candy;
 import game.backend.element.CandyColor;
@@ -23,7 +24,7 @@ public abstract class Grid {
 	private List<GameListener> listeners = new ArrayList<>();
 	private MoveMaker moveMaker;
 	private FigureDetector figureDetector;
-	
+
 	protected abstract GameState newState();
 	protected abstract void fillCells();
 
@@ -40,13 +41,21 @@ public abstract class Grid {
 		figureDetector = new FigureDetector(this);
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
-				g[i][j] = new Cell(this);
+				assignCell(i, j);
 				gMap.put(g[i][j], new Point(i,j));
 			}
 		}
 		fillCells();
 		fallElements();
-	}	
+	}
+
+	protected void assignCell(int i, int j){
+		setGridCell(i, j, new Cell(this));
+	}
+
+	protected void setGridCell(int i, int j, Cell cell){
+		g[i][j] = cell;
+	}
 
 	public Element get(int i, int j) {
 		return g[i][j].getContent();
@@ -81,19 +90,27 @@ public abstract class Grid {
 	public void setContent(int i, int j, Element e) {
 		g[i][j].setContent(e);
 	}
-	
+
 	public boolean tryMove(int i1, int j1, int i2, int j2) {
 		Move move = moveMaker.getMove(i1, j1, i2, j2);
 		swapContent(i1, j1, i2, j2);
 		if (move.isValid()) {
 			move.removeElements();
-			fallElements();
+			executeInstructionsTryMove();
 			return true;
 		} else {
 			swapContent(i1, j1, i2, j2);
 			return false;
 		}
-	}	
+	}
+
+	protected Figure checkFigure( int i, int j ){
+		return figureDetector.checkFigure( i, j );
+	}
+
+	protected void executeInstructionsTryMove(){
+		fallElements();
+	}
 	
 	public Figure tryRemove(Cell cell) {
 		if (gMap.containsKey(cell)) {
@@ -107,7 +124,7 @@ public abstract class Grid {
 		return null;
 	}
 	
-	private void removeFigure(int i, int j, Figure f) {
+	protected void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)get(i, j)).getColor();
 		if (f.hasReplacement()) {
 			setContent(i, j, f.generateReplacement(color));

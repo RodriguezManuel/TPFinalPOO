@@ -1,6 +1,9 @@
 package game.backend.level;
 
 import game.backend.GameState;
+import game.backend.element.Element;
+import game.backend.element.SpecialCandy;
+import game.backend.element.TimeBombCandy;
 
 public abstract class SpecialLevel extends Level {
 
@@ -14,24 +17,31 @@ public abstract class SpecialLevel extends Level {
         return quota <= ((SpecialLevelGameState)state()).getSpawnedSpecials();
     }
 
-    public void addSpecial(){
+    public void incSpecial(){
         ((SpecialLevelGameState)state()).incSpawnedSpecials();
+    }
+
+    public int getCountdown(){
+        return ((SpecialLevelGameState)state()).getCountdown();
     }
 
     protected abstract class SpecialLevelGameState extends GameState {
 
-        private int candyGoal;
         private int countdown;
-        private int specialsLeft = candyGoal;
+        private int specialsLeft;
         private int spawnedSpecials = 0;
 
         protected SpecialLevelGameState( int candyGoal ){
-            this.candyGoal = candyGoal;
+            specialsLeft = candyGoal;
         }
 
         protected void setCountdown( int value ){
             countdown = value;
         };
+
+        protected void setSpawnedSpecials( int value ){
+            spawnedSpecials = value;
+        }
 
         public int getSpawnedSpecials(){
             return spawnedSpecials;
@@ -39,6 +49,10 @@ public abstract class SpecialLevel extends Level {
 
         public void incSpawnedSpecials(){
             spawnedSpecials++;
+        }
+
+        protected void setSpecialsLeft( int value ){
+            specialsLeft = value;
         }
 
         public void decSpecialsLeft(){
@@ -55,6 +69,9 @@ public abstract class SpecialLevel extends Level {
             return specialsLeft == 0;
         }
 
+        public int getCountdown(){
+            return countdown;
+        }
     }
 
 }

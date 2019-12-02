@@ -17,19 +17,18 @@ public abstract class Level extends Grid {
     @Override
     protected void fillCells() {
 
-        candyGenCell = getCandyGenerator();
         wallCell = new Cell(this);
         wallCell.setContent(new Wall());
 
         //corners
-        g()[0][0].setAround(candyGenCell, g()[1][0], wallCell, g()[0][1]);
-        g()[0][SIZE-1].setAround(candyGenCell, g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
+        g()[0][0].setAround(getCandyGenerator(), g()[1][0], wallCell, g()[0][1]);
+        g()[0][SIZE-1].setAround(getCandyGenerator(), g()[1][SIZE-1], g()[0][SIZE-2], wallCell);
         g()[SIZE-1][0].setAround(g()[SIZE-2][0], wallCell, wallCell, g()[SIZE-1][1]);
         g()[SIZE-1][SIZE-1].setAround(g()[SIZE-2][SIZE-1], wallCell, g()[SIZE-1][SIZE-2], wallCell);
 
         //upper line cells
         for (int j = 1; j < SIZE-1; j++) {
-            g()[0][j].setAround(candyGenCell,g()[1][j],g()[0][j-1],g()[0][j+1]);
+            g()[0][j].setAround(getCandyGenerator(),g()[1][j],g()[0][j-1],g()[0][j+1]);
         }
         //bottom line cells
         for (int j = 1; j < SIZE-1; j++) {
@@ -52,11 +51,8 @@ public abstract class Level extends Grid {
     }
 
     @Override
-    public boolean tryMove(int i1, int j1, int i2, int j2) {
-        boolean ret;
-        if (ret = super.tryMove(i1, j1, i2, j2)) {
-            state().addMove();
-        }
-        return ret;
+    protected void executeInstructionsTryMove() {
+        super.executeInstructionsTryMove();
+        state().addMove();
     }
 }
