@@ -12,7 +12,7 @@ public class TimeCell extends Cell {
     @Override
     public void clearContent() {
         if(getContent().isSpecial())
-            ((TimeLevel)grid).removeSpecial((TimeCandy) getContent());
+            ((TimeLevel)getGrid()).removeSpecial((TimeCandy) getContent());
 
         super.clearContent();
     }
