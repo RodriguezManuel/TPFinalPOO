@@ -8,7 +8,7 @@ import game.backend.element.TimeBonusCandy;
 
 public class Level3 extends TimeLevel {
 
-   public static final int  MAX_SPECIAL_CANDY = 1, INIT_TIME = 60;
+   public static final int  MAX_SPECIAL_CANDY = 10, INIT_TIME = 600;
 
    public Level3(){
        super( MAX_SPECIAL_CANDY );
@@ -27,7 +27,7 @@ public class Level3 extends TimeLevel {
 
     @Override
     protected GameState newState() {
-        return new Level3State( quota );
+        return new Level3State( getQuota() );
     }
 
     @Override

@@ -27,7 +27,7 @@ public class L2CandyGeneratorCell extends TimeCandyGeneratorCell {
         Element ret = super.getContent();
         if( forceSpecial ){
             if( !ret.isSpecial() ){
-                ((Level2)grid).incSpecial();
+                ((Level2)getGrid()).incSpecial();
             }
             alreadyForcing = false;
             forceSpecial = false;
@@ -39,7 +39,7 @@ public class L2CandyGeneratorCell extends TimeCandyGeneratorCell {
     @Override
     protected Element getSpecialCandy( Candy candy ){
         TimeBombCandy ret = new TimeBombCandy( candy.getColor() );
-        ((Level2)grid).addSpecial( ret );
+        ((Level2)getGrid()).addSpecial( ret );
         return ret;
     }
 

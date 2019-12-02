@@ -13,7 +13,7 @@ import java.util.*;
 
 public class Level2 extends TimeLevel {
 
-    private static final int MAX_SPECIAL_CANDY = 1;
+    private static final int MAX_SPECIAL_CANDY = 10;
 
     public Level2(){
         super(MAX_SPECIAL_CANDY);
@@ -78,7 +78,7 @@ public class Level2 extends TimeLevel {
 
     @Override
     protected GameState newState(){
-        return new Level2State( quota );
+        return new Level2State( getQuota() );
     }
 
     private class Level2State extends SpecialLevelGameState{

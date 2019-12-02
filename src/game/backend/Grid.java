@@ -1,6 +1,5 @@
 package game.backend;
 
-import com.sun.istack.internal.NotNull;
 import game.backend.cell.Cell;
 import game.backend.element.Candy;
 import game.backend.element.CandyColor;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 public abstract class Grid {
 	
-	public static final int SIZE = 9;
+	public static final int SIZE = 11;
 
 	private Cell[][] g = new Cell[SIZE][SIZE];
 	private Map<Cell, Point> gMap = new HashMap<>();

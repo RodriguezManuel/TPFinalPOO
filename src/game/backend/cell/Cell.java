@@ -3,13 +3,11 @@ package game.backend.cell;
 import game.backend.Grid;
 import game.backend.element.Element;
 import game.backend.element.Nothing;
-import game.backend.element.TimeBombCandy;
-import game.backend.level.Level2;
 import game.backend.move.Direction;
 
 public class Cell {
 	
-	protected Grid grid;
+	private Grid grid;
 	private Cell[] around = new Cell[Direction.values().length];
 	private Element content;
 	
@@ -98,4 +96,7 @@ public class Cell {
 		this.content = content;
 	}
 
+	public Grid getGrid() {
+		return grid;
+	}
 }

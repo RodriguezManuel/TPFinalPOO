@@ -1,7 +1,6 @@
 package game.frontend;
 
 import game.backend.CandyGame;
-import game.backend.Grid;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;

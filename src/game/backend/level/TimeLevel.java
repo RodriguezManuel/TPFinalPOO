@@ -6,7 +6,7 @@ import game.backend.element.TimeCandy;
 
 public abstract class TimeLevel extends Level {
 
-    protected int quota;
+    private int quota;
 
     protected TimeLevel(int quota ){
         this.quota = quota;
@@ -90,4 +90,7 @@ public abstract class TimeLevel extends Level {
         }
     }
 
+    public int getQuota() {
+        return quota;
+    }
 }
