@@ -49,5 +49,4 @@ public class BoardPanel extends TilePane {
 			cells[row][column].getChildren().add(text);
 		}
 	}
-
 }

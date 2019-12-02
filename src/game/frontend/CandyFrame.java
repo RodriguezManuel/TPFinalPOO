@@ -11,6 +11,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -25,7 +26,10 @@ public class CandyFrame extends VBox {
 	private Point2D lastPoint;
 	private CandyGame game;
 
+	private boolean flagNotOver;
+
 	public CandyFrame(CandyGame game, ScorePanel levelScorePanel, AppMenu menu) {
+		flagNotOver = true;
 		this.game = game;
 		getChildren().add(menu);
 		images = new ImageManager();
@@ -34,7 +38,7 @@ public class CandyFrame extends VBox {
 		scorePanel = levelScorePanel;
 		getChildren().add(scorePanel);
 		game.initGame();
-		scorePanel.setGrid(game.getGrid());
+		scorePanel.setGame(game);
 		GameListener listener;
 		game.addGameListener(listener = new GameListener() {
 			@Override
@@ -65,24 +69,27 @@ public class CandyFrame extends VBox {
 		listener.gridUpdated();
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-			if (lastPoint == null) {
-				lastPoint = translateCoords(event.getX(), event.getY());
-				System.out.println("Get first = " +  lastPoint);
-			} else {
-				Point2D newPoint = translateCoords(event.getX(), event.getY());
-				if (newPoint != null) {
-					System.out.println("Get second = " +  newPoint);
-					game().tryMove((int)lastPoint.getX(), (int)lastPoint.getY(), (int)newPoint.getX(), (int)newPoint.getY());
-					String message = ((Long)game().getScore()).toString();
-					if (game().isFinished()) {
-						if (game().playerWon()) {
-							message = message + " Finished - Player Won!";
-						} else {
-							message = message + " Finished - Loser !";
+			if(flagNotOver) {
+				if (lastPoint == null) {
+					lastPoint = translateCoords(event.getX(), event.getY());
+					System.out.println("Get first = " + lastPoint);
+				} else {
+					Point2D newPoint = translateCoords(event.getX(), event.getY());
+					if (newPoint != null) {
+						System.out.println("Get second = " + newPoint);
+						game().tryMove((int) lastPoint.getX(), (int) lastPoint.getY(), (int) newPoint.getX(), (int) newPoint.getY());
+						String message = ((Long) game().getScore()).toString();
+						if (game().isFinished()) {
+							if (game().playerWon()) {
+								message = message + " Finished - Player Won!";
+							} else {
+								message = message + " Finished - Loser !";
+							}
+							flagNotOver = false;
 						}
+						scorePanel.updateData(message);
+						lastPoint = null;
 					}
-					scorePanel.updateData(message);
-					lastPoint = null;
 				}
 			}
 		});

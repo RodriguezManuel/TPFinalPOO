@@ -13,7 +13,7 @@ import java.util.*;
 
 public class Level2 extends TimeLevel {
 
-    private static final int MAX_SPECIAL_CANDY = 8;
+    private static final int MAX_SPECIAL_CANDY = 1;
 
     public Level2(){
         super(MAX_SPECIAL_CANDY);

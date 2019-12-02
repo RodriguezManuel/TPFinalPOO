@@ -8,7 +8,7 @@ import game.backend.element.TimeBonusCandy;
 
 public class Level3 extends TimeLevel {
 
-   public static final int  MAX_SPECIAL_CANDY = 7, INIT_TIME = 60;
+   public static final int  MAX_SPECIAL_CANDY = 1, INIT_TIME = 60;
 
    public Level3(){
        super( MAX_SPECIAL_CANDY );

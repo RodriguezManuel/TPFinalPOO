@@ -16,7 +16,7 @@ public class L3ScorePanel extends ScorePanel {
     {
         super();
         setStyle("-fx-background-color: #5490ff");
-        timerLabel = new Label("");
+        timerLabel = new Label();
         timerLabel.setAlignment(Pos.TOP_RIGHT);
         timerLabel.setStyle("-fx-font-size: 24");
         setRight(timerLabel);
@@ -28,6 +28,13 @@ public class L3ScorePanel extends ScorePanel {
                     @Override
                     public void run() {
                         updateTime( getTime() );
+
+                        if (game.isFinished() ) {
+                            timer.cancel();
+                            if(!game.playerWon()) {
+                                updateData(" Finished - Loser !");
+                            }
+                        }
                     }
                 });
             }
@@ -39,7 +46,7 @@ public class L3ScorePanel extends ScorePanel {
     }
 
     private String getTime(){
-        return Integer.toString( ((Level3)grid).getAndDecCountdown() );
+        return Integer.toString( ((Level3)game.getGrid()).getAndDecCountdown() );
     }
 
 }

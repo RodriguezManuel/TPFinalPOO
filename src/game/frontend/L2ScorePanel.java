@@ -1,5 +1,6 @@
 package game.frontend;
 
+import game.backend.CandyGame;
 import game.backend.Grid;
 import game.backend.level.TimeLevel;
 import javafx.geometry.Pos;
@@ -26,13 +27,13 @@ public class L2ScorePanel extends ScorePanel
     }
 
     @Override
-    public void setGrid(Grid grid) {
-        super.setGrid(grid);
+    public void setGame(CandyGame game) {
+        super.setGame(game);
         updateCountdown();
     }
 
     public void updateCountdown() {
-        countdownLabel.setText(String.valueOf( ((TimeLevel)grid).getCountdown()) );
+        countdownLabel.setText(String.valueOf( ((TimeLevel)game.getGrid()).getCountdown()) );
     }
 
 }

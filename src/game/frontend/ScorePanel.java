@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 public abstract class ScorePanel extends BorderPane {
 
 	private Label scoreLabel;
-	protected Grid grid;
+	protected CandyGame game;
 
 	protected ScorePanel() {
 		setStyle("-fx-background-color: #5490ff");
@@ -27,8 +27,8 @@ public abstract class ScorePanel extends BorderPane {
 		updateScore(text);
 	}
 
-	public void setGrid(Grid grid) {
-		this.grid = grid;
+	public void setGame(CandyGame game) {
+		this.game = game;
 	}
 
 }
