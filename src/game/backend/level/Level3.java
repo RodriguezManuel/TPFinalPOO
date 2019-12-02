@@ -58,5 +58,14 @@ public class Level3 extends TimeLevel {
            incCountdown( candy.getTimer() );
        }
 
+        @Override
+        public int getCountdown() {
+           int aux = super.getCountdown();
+           if(aux == 0)
+               return aux;
+
+           setCountdown(super.getCountdown() - 1);
+           return super.getCountdown();
+        }
     }
 }
