@@ -5,7 +5,7 @@ import game.backend.element.Element;
 import game.backend.level.TimeLevel;
 
 public abstract class TimeCandyGeneratorCell extends CandyGeneratorCell {
-    private static final int N = 40; //Determina la frecuencia de generación de caramelos con propiedades especiales (números encima)
+    private static final int N = 50; //Determina la frecuencia de generación de caramelos con propiedades especiales (números encima)
                                     //Mientras mayor el N, menos frecuente es la generación con el pasar de los turnos
 
     protected TimeCandyGeneratorCell(TimeLevel lvl ){
