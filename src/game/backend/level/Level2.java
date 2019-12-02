@@ -4,24 +4,19 @@ import game.backend.Figure;
 import game.backend.GameState;
 import game.backend.cell.Cell;
 import game.backend.cell.L2CandyGeneratorCell;
-import game.backend.cell.Level2Cell;
+import game.backend.cell.TimeCell;
 import game.backend.element.CandyColor;
-import game.backend.element.SpecialCandy;
+import game.backend.element.TimeCandy;
 import game.backend.element.TimeBombCandy;
 
 import java.util.*;
 
-public class Level2 extends SpecialLevel {
+public class Level2 extends TimeLevel {
 
     private static final int MAX_SPECIAL_CANDY = 8;
 
     public Level2(){
         super(MAX_SPECIAL_CANDY);
-    }
-
-    @Override
-    protected void assignCell(int i, int j) {
-        setGridCell(i, j, new Level2Cell(this));
     }
 
     @Override
@@ -86,11 +81,6 @@ public class Level2 extends SpecialLevel {
         return new Level2State( quota );
     }
 
-    public void removeSpecial(SpecialCandy candy){
-        ((Level2State)state()).decSpecialsLeft();
-        ((Level2State)state()).removeTimeBomb( (TimeBombCandy) candy );
-    }
-
     private class Level2State extends SpecialLevelGameState{
         private TreeMap<Integer, TimeBombCandy> activeSpecials = new TreeMap<>();
 
@@ -102,6 +92,12 @@ public class Level2 extends SpecialLevel {
             setSpecialsLeft( quota );
         }
 
+        @Override
+        public void removeSpecial( TimeCandy candy ){
+            decSpecialsLeft();
+            removeTimeBomb( (TimeBombCandy) candy );
+        }
+
         public void resetSpawnedSpecials(){
             setSpawnedSpecials( activeSpecials.size() );
         }
@@ -110,7 +106,7 @@ public class Level2 extends SpecialLevel {
             setCountdown( activeSpecials.firstEntry().getValue().getTimer() );
         }
 
-        public void removeTimeBomb( TimeBombCandy candy ){
+        private void removeTimeBomb( TimeBombCandy candy ){
             activeSpecials.remove( candy.getId() );
             if( !activeSpecials.isEmpty() ){
                 updateCountdown();

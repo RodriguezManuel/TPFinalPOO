@@ -1,6 +1,6 @@
 package game.frontend;
 
-import game.backend.level.SpecialLevel;
+import game.backend.level.TimeLevel;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -15,10 +15,10 @@ public class L3ScorePanel extends ScorePanel {
     {
         super();
         setStyle("-fx-background-color: #5490ff");
-        timerLabel = new Label(getTime());
-        timerLabel.setAlignment(Pos.TOP_LEFT);
+        timerLabel = new Label("");
+        timerLabel.setAlignment(Pos.TOP_RIGHT);
         timerLabel.setStyle("-fx-font-size: 24");
-        setLeft(timerLabel);
+        setRight(timerLabel);
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -26,15 +26,19 @@ public class L3ScorePanel extends ScorePanel {
                 Platform.runLater(new TimerTask() {
                     @Override
                     public void run() {
-                        updateScore( getTime() );
+                        updateTime( getTime() );
                     }
                 });
             }
         }, 0, 1000);
     }
 
+    private void updateTime( String time ){
+        timerLabel.setText( time );
+    }
+
     private String getTime(){
-        return Integer.toString( ((SpecialLevel)grid).getCountdown() );
+        return Integer.toString( ((TimeLevel)grid).getCountdown() );
     }
 
 }

@@ -1,12 +1,11 @@
 package game.backend.cell;
 
 import game.backend.element.Candy;
-import game.backend.element.CandyColor;
 import game.backend.element.Element;
 import game.backend.element.TimeBombCandy;
 import game.backend.level.Level2;
 
-public class L2CandyGeneratorCell extends SpecialCandyGeneratorCell {
+public class L2CandyGeneratorCell extends TimeCandyGeneratorCell {
 
     private boolean forceSpecial = false;
     private static boolean alreadyForcing = false;

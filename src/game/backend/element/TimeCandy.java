@@ -2,10 +2,10 @@ package game.backend.element;
 
 import java.util.Objects;
 
-public abstract class SpecialCandy extends Candy {
+public abstract class TimeCandy extends Candy {
     protected int timer;
 
-    protected SpecialCandy(int timer, CandyColor color) {
+    protected TimeCandy(int timer, CandyColor color) {
         super(color);
         this.timer = timer;
     }

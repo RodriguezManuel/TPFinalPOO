@@ -1,7 +1,7 @@
 package game.frontend;
 
 import game.backend.element.Element;
-import game.backend.element.SpecialCandy;
+import game.backend.element.TimeCandy;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,7 +42,7 @@ public class BoardPanel extends TilePane {
 			dropShadow.setOffsetX(3.0);
 			dropShadow.setOffsetY(3.0);
 			dropShadow.setColor(Color.ORANGERED);
-			Text text = new Text( ((SpecialCandy ) elem).getLabel() ); // estoy seguro que es special pues entro al if
+			Text text = new Text( ((TimeCandy) elem).getLabel() ); // estoy seguro que es special pues entro al if
 			text.setFont(Font.font("Impact", FontWeight.BOLD, 40));
 			text.setFill(Color.BLACK);
 			text.setEffect(dropShadow);

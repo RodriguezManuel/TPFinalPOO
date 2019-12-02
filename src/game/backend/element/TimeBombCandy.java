@@ -1,6 +1,6 @@
 package game.backend.element;
 
-public class TimeBombCandy extends SpecialCandy {
+public class TimeBombCandy extends TimeCandy {
     private static final int INIT = 10;
     private static int id = 0;
     private int idCandy;

@@ -5,7 +5,7 @@ import game.backend.element.Element;
 import game.backend.element.TimeBonusCandy;
 import game.backend.level.Level3;
 
-public class L3CandyGeneratorCell extends SpecialCandyGeneratorCell{
+public class L3CandyGeneratorCell extends TimeCandyGeneratorCell {
 
     public L3CandyGeneratorCell( Level3 lvl ){
         super( lvl );

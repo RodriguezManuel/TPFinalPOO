@@ -1,7 +1,7 @@
 package game.frontend;
 
 import game.backend.Grid;
-import game.backend.level.SpecialLevel;
+import game.backend.level.TimeLevel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 
@@ -25,8 +25,14 @@ public class L2ScorePanel extends ScorePanel
         updateCountdown();
     }
 
+    @Override
+    public void setGrid(Grid grid) {
+        super.setGrid(grid);
+        updateCountdown();
+    }
+
     public void updateCountdown() {
-        countdownLabel.setText(String.valueOf( ((SpecialLevel)grid).getCountdown()) );
+        countdownLabel.setText(String.valueOf( ((TimeLevel)grid).getCountdown()) );
     }
 
 }
