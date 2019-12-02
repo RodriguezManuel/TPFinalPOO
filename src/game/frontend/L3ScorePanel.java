@@ -1,66 +1,40 @@
 package game.frontend;
 
+import game.backend.level.SpecialLevel;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 
-public class L3ScorePanel extends ScorePanel
-{
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class L3ScorePanel extends ScorePanel {
     private Label timerLabel;
-    private int seconds;
-    private int minutes;
 
     public L3ScorePanel()
     {
         super();
-        this.seconds=10;
-        this.minutes=0;
         setStyle("-fx-background-color: #5490ff");
-        timerLabel = new Label(showTimerLabel());
+        timerLabel = new Label(getTime());
         timerLabel.setAlignment(Pos.TOP_LEFT);
         timerLabel.setStyle("-fx-font-size: 24");
         setLeft(timerLabel);
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(new TimerTask() {
+                    @Override
+                    public void run() {
+                        updateScore( getTime() );
+                    }
+                });
+            }
+        }, 0, 1000);
     }
 
-    private boolean isMoreThanMinutes()
-    {
-        return seconds>=60;
+    private String getTime(){
+        return Integer.toString( ((SpecialLevel)grid).getCountdown() );
     }
 
-    private String showTimerLabel()
-    {
-        String min=String.valueOf(minutes);
-        String sec=String.valueOf(seconds);
-        if(isMoreThanMinutes())
-        {
-            min=String.valueOf(minutes+seconds/60);
-            sec=String.valueOf(seconds%60);
-        }
-        return min+":"+(seconds<10? "0" : "")+sec;
-
-    }
-
-    private void decrementTime()
-    {
-        if(seconds>0)
-        {
-            seconds--;
-        }
-        else if( minutes>0)
-        {
-            minutes--;
-            seconds=59;
-        }
-    }
-
-    @Override
-    public void updateData(String text)
-    {
-        super.updateData(text);
-    }
-
-    public void updateTimer()
-    {
-        decrementTime();
-        timerLabel.setText(showTimerLabel());
-    }
 }
