@@ -25,15 +25,8 @@ public class L2ScorePanel extends ScorePanel
         updateCountdown();
     }
 
-    @Override
-    public void setGrid(Grid grid) {
-        super.setGrid(grid);
-        updateCountdown();
-    }
-
     public void updateCountdown() {
         countdownLabel.setText(String.valueOf( ((SpecialLevel)grid).getCountdown()) );
     }
-
 
 }
