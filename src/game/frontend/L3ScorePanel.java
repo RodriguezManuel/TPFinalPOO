@@ -46,7 +46,24 @@ public class L3ScorePanel extends ScorePanel {
     }
 
     private String getTime(){
-        return Integer.toString( ((Level3)game.getGrid()).getAndDecCountdown() );
+        return getMinuteSecondTime( ((Level3)game.getGrid()).getAndDecCountdown() );
+    }
+
+    private String getMinuteSecondTime(int time)
+    {
+        String min,sec;
+        int minutes=time/60;
+        int seconds=time%60;
+        min=String.valueOf(minutes);
+        if(seconds<10)
+        {
+          sec="0"+String.valueOf(seconds);
+        }
+        else
+        {
+          sec= String.valueOf(seconds);
+        }
+        return min+":"+sec;
     }
 
 }

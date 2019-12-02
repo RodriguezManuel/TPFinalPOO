@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 
 public class L2ScorePanel extends ScorePanel
 {
+    private final String TEXT="Moves left:";
     private Label countdownLabel;
 
     public L2ScorePanel()
@@ -33,7 +34,7 @@ public class L2ScorePanel extends ScorePanel
     }
 
     public void updateCountdown() {
-        countdownLabel.setText(String.valueOf( ((TimeLevel)game.getGrid()).getCountdown()) );
+        countdownLabel.setText(TEXT+String.valueOf( ((TimeLevel)game.getGrid()).getCountdown()) );
     }
 
 }
