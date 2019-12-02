@@ -14,7 +14,14 @@ public class Level3 extends TimeLevel {
        super( MAX_SPECIAL_CANDY );
    }
 
-   public int getAndDecCountdown(){
+    @Override
+    public void initialize() {
+        super.initialize();
+        ((Level3.Level3State)state()).resetSpecialsLeft();
+        ((Level3.Level3State)state()).updateCountdown();
+    }
+
+    public int getAndDecCountdown(){
        return ((Level3State)state()).getAndDecCountdown();
     }
 
@@ -59,13 +66,8 @@ public class Level3 extends TimeLevel {
        }
 
         @Override
-        public int getCountdown() {
-           int aux = super.getCountdown();
-           if(aux == 0)
-               return aux;
-
-           setCountdown(super.getCountdown() - 1);
-           return super.getCountdown();
+        protected void updateCountdown() {
+            setCountdown(INIT_TIME);
         }
     }
 }

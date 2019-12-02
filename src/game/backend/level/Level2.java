@@ -88,10 +88,6 @@ public class Level2 extends TimeLevel {
             super( candyGoal );
         }
 
-        protected void resetSpecialsLeft(){
-            setSpecialsLeft( quota );
-        }
-
         @Override
         public void removeSpecial( TimeCandy candy ){
             decSpecialsLeft();
@@ -102,7 +98,8 @@ public class Level2 extends TimeLevel {
             setSpawnedSpecials( activeSpecials.size() );
         }
 
-        public void updateCountdown(){
+        @Override
+        protected void updateCountdown(){
             setCountdown( activeSpecials.firstEntry().getValue().getTimer() );
         }
 

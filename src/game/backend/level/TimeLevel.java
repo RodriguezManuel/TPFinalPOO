@@ -82,6 +82,12 @@ public abstract class TimeLevel extends Level {
         public int getCountdown(){
             return countdown;
         }
+
+        protected abstract void updateCountdown();
+
+        protected void resetSpecialsLeft(){
+            setSpecialsLeft( quota );
+        }
     }
 
 }
