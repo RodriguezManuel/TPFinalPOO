@@ -35,6 +35,10 @@ public abstract class TimeLevel extends Level {
 
     public int getSpecialsLeft(){return ((SpecialLevelGameState)state()).getSpecialsLeft();}
 
+    public int getQuota() {
+        return quota;
+    }
+
     protected abstract class SpecialLevelGameState extends GameState {
 
         private int countdown;
@@ -95,9 +99,5 @@ public abstract class TimeLevel extends Level {
         protected void resetSpecialsLeft(){
             setSpecialsLeft( quota );
         }
-    }
-
-    public int getQuota() {
-        return quota;
     }
 }

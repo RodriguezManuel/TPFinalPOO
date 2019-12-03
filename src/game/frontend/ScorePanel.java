@@ -12,7 +12,7 @@ public abstract class ScorePanel extends BorderPane {
 
 	protected ScorePanel() {
 		setStyle("-fx-background-color: #5490ff");
-		scoreLabel = new Label("0");
+		scoreLabel = new Label();
 		scoreLabel.setAlignment(Pos.CENTER);
 		scoreLabel.setStyle("-fx-font-size: 24");
 		setCenter(scoreLabel);

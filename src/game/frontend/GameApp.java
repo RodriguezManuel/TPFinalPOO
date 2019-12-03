@@ -9,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.sql.Time;
+
 public class GameApp extends Application {
 
 	static Stage window = new Stage();
@@ -43,6 +45,7 @@ public class GameApp extends Application {
 		//display default
 		window.setScene(firstScene);
 		window.setTitle("Candy Crush TP POO 2019_2Q");
+		window.setResizable(false);
 		window.show();
 	}
 

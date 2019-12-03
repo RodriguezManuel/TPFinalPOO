@@ -31,10 +31,10 @@ public abstract class Grid {
 		return g;
 	}
 	
-	public GameState state(){
+	protected GameState state(){
 		return state;
 	}
-	
+
 	public void initialize() {
 		moveMaker = new MoveMaker(this);
 		figureDetector = new FigureDetector(this);
@@ -160,5 +160,7 @@ public abstract class Grid {
 			gl.cellExplosion(e);
 		}
 	}
+
+	public int getMoves(){ return state.getMoves(); }
 
 }

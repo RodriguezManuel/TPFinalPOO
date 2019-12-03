@@ -23,17 +23,12 @@ public class L1ScorePanel extends ScorePanel {
         remainingMovesLabel.setAlignment(Pos.TOP_LEFT);
         remainingMovesLabel.setStyle("-fx-font-size: 24");
         setLeft(remainingMovesLabel);
-        requiredScoreLabel=new Label();
-        requiredScoreLabel.setAlignment(Pos.TOP_RIGHT);
-        requiredScoreLabel.setStyle("-fx-font-size: 24");
-        setRight(requiredScoreLabel);
     }
 
     @Override
     public void setGame(CandyGame game)
     {
         super.setGame(game);
-        requiredScoreLabel.setText(REQUIREDSCORETEXT+((Level1)game.getGrid()).getRequiredScore() );
         updateRemainingMoves();
     }
 
@@ -45,8 +40,13 @@ public class L1ScorePanel extends ScorePanel {
     private long getRemainingMoves()
     {
         long maxMoves= ((Level1)game.getGrid()).getMaxMoves();
-        long currentMoves= ((Level1)game.getGrid()).state().getMoves();
+        long currentMoves= ((Level1)game.getGrid()).getMoves();
         return  maxMoves - currentMoves;
+    }
+
+    @Override
+    protected void updateScore(String text) {
+        super.updateScore(text + "/" + ((Level1)game.getGrid()).getRequiredScore() );
     }
 
     @Override
