@@ -10,10 +10,8 @@ import javafx.scene.control.Label;
 
 public class L1ScorePanel extends ScorePanel {
 
-    private final String REQUIREDSCORETEXT= "Required score: ";
     private final String REMAININGMOVESTEXT= "Remaining moves: ";
     private Label remainingMovesLabel;
-    private Label requiredScoreLabel;
 
     public L1ScorePanel()
     {
@@ -57,7 +55,6 @@ public class L1ScorePanel extends ScorePanel {
        if(game.isFinished())
        {
            remainingMovesLabel.setText("");
-           requiredScoreLabel.setText("");
        }
     }
 }

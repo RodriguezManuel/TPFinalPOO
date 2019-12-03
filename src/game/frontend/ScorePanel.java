@@ -28,6 +28,7 @@ public abstract class ScorePanel extends BorderPane {
 
 	public void setGame(CandyGame game) {
 		this.game = game;
+		updateData("0");
 	}
 
 }
