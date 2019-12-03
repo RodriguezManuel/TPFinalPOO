@@ -33,6 +33,8 @@ public abstract class TimeLevel extends Level {
         return ((SpecialLevelGameState)state()).getCountdown();
     }
 
+    public int getSpecialsLeft(){return ((SpecialLevelGameState)state()).getSpecialsLeft();}
+
     protected abstract class SpecialLevelGameState extends GameState {
 
         private int countdown;
@@ -47,7 +49,12 @@ public abstract class TimeLevel extends Level {
 
         protected void setCountdown( int value ){
             countdown = value;
-        };
+        }
+
+        public int getSpecialsLeft()
+        {
+            return specialsLeft;
+        }
 
         protected void setSpawnedSpecials( int value ){
             spawnedSpecials = value;
@@ -67,7 +74,7 @@ public abstract class TimeLevel extends Level {
 
         public void decSpecialsLeft(){
             specialsLeft--;
-        };
+        }
 
         @Override
         public boolean gameOver(){

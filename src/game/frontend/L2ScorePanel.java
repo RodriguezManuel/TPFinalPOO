@@ -6,7 +6,7 @@ import game.backend.level.TimeLevel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 
-public class L2ScorePanel extends ScorePanel
+public class L2ScorePanel extends SpecialScorePanel
 {
     private static final String TEXT = "Moves Left: ";
     private Label countdownLabel;
@@ -25,6 +25,10 @@ public class L2ScorePanel extends ScorePanel
     public void updateData(String text) {
         super.updateData(text);
         updateCountdown();
+        if(game.isFinished())
+        {
+            countdownLabel.setText("");
+        }
     }
 
     @Override

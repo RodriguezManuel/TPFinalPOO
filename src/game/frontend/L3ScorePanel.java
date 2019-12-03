@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class L3ScorePanel extends ScorePanel {
+public class L3ScorePanel extends SpecialScorePanel {
     private Label timerLabel;
 
     public L3ScorePanel()
@@ -32,6 +32,7 @@ public class L3ScorePanel extends ScorePanel {
                             System.out.println("mbeh");
                             timer.cancel();
                             timer.purge();
+                            timerLabel.setText("");
                             if(!game.playerWon()) {
                                 updateData(" Finished - Loser !");
                             }
@@ -58,7 +59,7 @@ public class L3ScorePanel extends ScorePanel {
         min=String.valueOf(minutes);
         if(seconds<10)
         {
-          sec="0"+String.valueOf(seconds);
+          sec="0"+seconds;
         }
         else
         {
@@ -66,5 +67,6 @@ public class L3ScorePanel extends ScorePanel {
         }
         return min+":"+sec;
     }
+
 
 }
