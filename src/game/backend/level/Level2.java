@@ -71,7 +71,7 @@ public class Level2 extends TimeLevel {
 
         @Override
         protected void updateCountdown(){
-            if(activeSpecials.isEmpty())
+            if(noActive())
                 setCountdown(-1);
             else
                 setCountdown( activeSpecials.firstEntry().getValue().getTimer() );
@@ -79,7 +79,7 @@ public class Level2 extends TimeLevel {
 
         private void removeTimeBomb( TimeBombCandy candy ){
             activeSpecials.remove( candy.getId() );
-            if( !activeSpecials.isEmpty() ){
+            if( !noActive() ){
                 updateCountdown();
             }
         }
