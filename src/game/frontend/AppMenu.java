@@ -6,6 +6,7 @@ import game.backend.level.Level3;
 import javafx.application.Platform;
 import javafx.scene.control.*;
 
+import javax.swing.*;
 import java.util.Optional;
 
 public class AppMenu extends MenuBar {
@@ -21,7 +22,7 @@ public class AppMenu extends MenuBar {
             Optional<ButtonType> result = alert.showAndWait();
             if(result.isPresent()) {
                 if (result.get() == ButtonType.OK) {
-                    Platform.exit();
+                    System.exit(0);
                 }
             }
         });

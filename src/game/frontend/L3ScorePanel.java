@@ -28,9 +28,10 @@ public class L3ScorePanel extends ScorePanel {
                     @Override
                     public void run() {
                         updateTime( getTime() );
-
                         if (game.isFinished() ) {
+                            System.out.println("mbeh");
                             timer.cancel();
+                            timer.purge();
                             if(!game.playerWon()) {
                                 updateData(" Finished - Loser !");
                             }

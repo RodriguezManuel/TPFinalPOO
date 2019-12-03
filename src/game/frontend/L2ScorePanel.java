@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 
 public class L2ScorePanel extends ScorePanel
 {
-    private final String TEXT="Moves left: ";
+    private static final String TEXT = "Moves Left: ";
     private Label countdownLabel;
 
     public L2ScorePanel()
@@ -38,7 +38,7 @@ public class L2ScorePanel extends ScorePanel
         if(aux == -1)
             countdownLabel.setText("");
         else
-            countdownLabel.setText(TEXT+aux );
+            countdownLabel.setText(TEXT + aux);
     }
 
 }

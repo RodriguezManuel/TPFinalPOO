@@ -6,6 +6,7 @@ import game.backend.element.TimeBombCandy;
 import game.backend.level.Level2;
 
 public class L2CandyGeneratorCell extends TimeCandyGeneratorCell {
+
     public L2CandyGeneratorCell(Level2 lvl){
         super( lvl );
     }

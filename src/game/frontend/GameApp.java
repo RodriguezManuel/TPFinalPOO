@@ -21,6 +21,9 @@ public class GameApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		window = primaryStage;
+
+		primaryStage.setOnCloseRequest(event -> System.exit(0));
+
 		Image image = new Image("images/candycrush.png");
 
 		//Setting the image view
