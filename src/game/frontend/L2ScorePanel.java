@@ -34,7 +34,11 @@ public class L2ScorePanel extends ScorePanel
     }
 
     public void updateCountdown() {
-        countdownLabel.setText(TEXT+String.valueOf( ((TimeLevel)game.getGrid()).getCountdown()) );
+        int aux = ( (TimeLevel)game.getGrid() ).getCountdown();
+        if(aux == -1)
+            countdownLabel.setText("");
+        else
+            countdownLabel.setText(TEXT+aux );
     }
 
 }
