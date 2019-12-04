@@ -42,10 +42,6 @@ public class L1ScorePanel extends ScorePanel {
         return  maxMoves - currentMoves;
     }
 
-    @Override
-    protected void updateScore(String text) {
-        super.updateScore(text + "/" + ((Level1)game.getGrid()).getRequiredScore() );
-    }
 
     @Override
     public void updateData(String text)

@@ -60,6 +60,11 @@ public class Level2 extends TimeLevel {
         }
 
         @Override
+        public boolean playerWon(){
+            return super.playerWon() || getSpecialsLeft() == 0;
+        }
+
+        @Override
         public void removeSpecial( TimeCandy candy ){
             decSpecialsLeft();
             removeTimeBomb( (TimeBombCandy) candy );

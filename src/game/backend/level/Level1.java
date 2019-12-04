@@ -4,8 +4,8 @@ import game.backend.GameState;
 
 public class Level1 extends Level {
 	
-	private static int REQUIRED_SCORE = 5000; 
-	private static int MAX_MOVES = 20;
+	protected static int REQUIRED_SCORE = 5000;
+	protected static int MAX_MOVES = 20;
 
 	public int getRequiredScore()
 	{
@@ -23,7 +23,7 @@ public class Level1 extends Level {
 	}
 
 
-	private class Level1State extends GameState {
+	protected class Level1State extends GameState {
 		private long requiredScore;
 		private long maxMoves;
 

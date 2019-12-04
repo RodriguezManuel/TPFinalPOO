@@ -4,7 +4,7 @@ import game.backend.GameState;
 import game.backend.cell.TimeCell;
 import game.backend.element.TimeCandy;
 
-public abstract class TimeLevel extends Level {
+public abstract class TimeLevel extends Level1 {
 
     private int quota;
 
@@ -39,14 +39,20 @@ public abstract class TimeLevel extends Level {
         return quota;
     }
 
-    protected abstract class SpecialLevelGameState extends GameState {
+    protected abstract class SpecialLevelGameState extends Level1State {
 
         private int countdown;
         private int specialsLeft;
         private int spawnedSpecials = 0;
 
         protected SpecialLevelGameState( int candyGoal ){
+            super(REQUIRED_SCORE, MAX_MOVES);
             specialsLeft = candyGoal;
+        }
+
+        @Override
+        public boolean gameOver(){
+            return playerWon() || getCountdown() == 0;
         }
 
         public abstract void removeSpecial( TimeCandy candy );
@@ -78,16 +84,6 @@ public abstract class TimeLevel extends Level {
 
         public void decSpecialsLeft(){
             specialsLeft--;
-        }
-
-        @Override
-        public boolean gameOver(){
-            return playerWon() || countdown == 0;
-        }
-
-        @Override
-        public boolean playerWon(){
-            return specialsLeft == 0;
         }
 
         public int getCountdown(){

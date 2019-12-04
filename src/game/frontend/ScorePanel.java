@@ -1,6 +1,9 @@
 package game.frontend;
 
 import game.backend.CandyGame;
+import game.backend.level.Level;
+import game.backend.level.Level1;
+import game.backend.level.Level2;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -19,7 +22,7 @@ public abstract class ScorePanel extends BorderPane {
 	}
 
 	protected void updateScore(String text) {
-		scoreLabel.setText(text);
+		scoreLabel.setText(text + "/" + ((Level1)game.getGrid()).getRequiredScore());
 	}
 
 	public void updateData(String text) {
