@@ -8,7 +8,12 @@ public abstract class TimeLevel extends Level {
 
     private int quota;
 
-    protected TimeLevel(int quota ){
+    protected TimeLevel(int quota )
+    {
+        if(quota<=0)
+        {
+            throw new IllegalStateException();
+        }
         this.quota = quota;
     }
 
@@ -51,7 +56,12 @@ public abstract class TimeLevel extends Level {
 
         public abstract void removeSpecial( TimeCandy candy );
 
-        protected void setCountdown( int value ){
+        protected void setCountdown( int value )
+        {
+            if(value<=0)
+            {
+                throw new IllegalStateException();
+            }
             countdown = value;
         }
 

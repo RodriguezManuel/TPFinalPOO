@@ -6,15 +6,18 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 
+import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class L3ScorePanel extends SpecialScorePanel {
-    private Label timerLabel;
 
+    private Label timerLabel;
+    private boolean timerSeted;
     public L3ScorePanel()
     {
         super();
+        timerSeted=false;
         setStyle("-fx-background-color: #5490ff");
         timerLabel = new Label();
         timerLabel.setAlignment(Pos.TOP_RIGHT);
@@ -27,6 +30,11 @@ public class L3ScorePanel extends SpecialScorePanel {
                 Platform.runLater(new TimerTask() {
                     @Override
                     public void run() {
+                        if(!timerSeted)
+                        {
+                            TimerManager.setTimer(timer);
+                            timerSeted=true;
+                        }
                         updateTime( getTime() );
                         if (game.isFinished() ) {
                             System.out.println("mbeh");

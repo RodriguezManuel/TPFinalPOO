@@ -53,6 +53,7 @@ public class GameApp extends Application {
 	{
 		window.close();
 
+		TimerManager.closeTimer();
 		CandyGame game = new CandyGame(clazz);
 		CandyFrame frame = new CandyFrame(game, scorePanel, menu);
 		Scene scene = new Scene(frame);
