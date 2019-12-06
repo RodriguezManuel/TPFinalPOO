@@ -45,14 +45,14 @@ public class Level3 extends TimeLevel {
            setCountdown(INIT_TIME);
        }
 
-        public int getAndDecCountdown(){
+       public int getAndDecCountdown(){
             int aux = getCountdown();
             if(aux == 0)
                 return aux;
 
             setCountdown(aux - 1);
             return getCountdown();
-        }
+       }
 
        private void incCountdown( int time ){
            setCountdown( getCountdown() + time );
@@ -68,8 +68,8 @@ public class Level3 extends TimeLevel {
            incCountdown( candy.getTimer() );
        }
 
-        @Override
-        protected void updateCountdown() {
+       @Override
+       protected void updateCountdown() {
             setCountdown(INIT_TIME);
         }
     }
