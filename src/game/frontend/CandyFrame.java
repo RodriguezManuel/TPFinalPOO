@@ -75,7 +75,9 @@ public class CandyFrame extends VBox {
 		listener.gridUpdated();
 
 		addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-			if(flagNotOver) {
+
+			String message = ((Long) game().getScore()).toString();
+			if(!game.isFinished()) {
 				if (lastPoint == null) {
 					lastPoint = translateCoords(event.getX(), event.getY());
 					System.out.println("Get first = " + lastPoint);
@@ -84,27 +86,17 @@ public class CandyFrame extends VBox {
 					if (newPoint != null) {
 						System.out.println("Get second = " + newPoint);
 						game().tryMove((int) lastPoint.getX(), (int) lastPoint.getY(), (int) newPoint.getX(), (int) newPoint.getY());
-						String message = ((Long) game().getScore()).toString();
-						if (game().isFinished()) {
-							if (game().playerWon()) {
-								message = message + " Finished - Player Won!";
-							} else {
-								message = message + " Finished - Loser !";
-							}
-							flagNotOver = false;
-							Pane pane = new Pane();
-							Canvas canvas = new Canvas(game.getSize() * CELL_SIZE,  game.getSize() * CELL_SIZE );
-							pane.getChildren().add(canvas);
-							getChildren().add(pane);
-							pane.setStyle("-fx-background-color: #5490ff");
-							getChildren().remove( boardPanel );
-							scorePanel.setTop( pane );
-						}
-						scorePanel.updateData(message);
 						lastPoint = null;
 					}
 				}
 			}
+			else if (game().playerWon()) {
+				message = "Finished - Player Won! " + message;
+			} else {
+				message = "Finished - Loser ! " + message;
+			}
+
+			scorePanel.updateData(message);
 		});
 
 	}
