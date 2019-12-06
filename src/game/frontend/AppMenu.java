@@ -41,7 +41,7 @@ public class AppMenu extends MenuBar {
 
         Menu menuLevels = new Menu("Levels");
         MenuItem[] levels = new MenuItem[3];
-        for(int i=0;i<3;i++) {
+        for(int i=0;i < 3;i++) {
             levels[i] = new MenuItem("Level " + ( i + 1 ));
         }
 
