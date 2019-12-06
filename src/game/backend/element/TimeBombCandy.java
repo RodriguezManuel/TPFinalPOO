@@ -19,13 +19,7 @@ public class TimeBombCandy extends TimeCandy {
     }
 
     public void decTimer() {
-        if(!outOfTime()) {
-            timer--;
-        }
-    }
-
-    public boolean outOfTime() {
-        return timer == 0;
+        timer--;
     }
 
     @Override
