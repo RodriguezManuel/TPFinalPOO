@@ -49,8 +49,7 @@ public class GameApp extends Application {
 		window.show();
 	}
 
-	public static void startLevel(Class<? extends Level> clazz, ScorePanel scorePanel, AppMenu menu)
-	{
+	public static void startLevel(Class<? extends Level> clazz, ScorePanel scorePanel, AppMenu menu) {
 		window.close();
 
 		CandyGame game = new CandyGame(clazz);

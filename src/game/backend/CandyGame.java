@@ -45,6 +45,7 @@ public class CandyGame implements GameListener {
 	}
 	
 	public boolean isFinished() {
+		System.out.println("isFinished()");
 		return state.gameOver();
 	}
 	
