@@ -34,7 +34,7 @@ public class L3ScorePanel extends SpecialScorePanel {
                             timer.purge();
                             timerLabel.setText("");
                             if (!game.playerWon()) {
-                                updateData(" Finished - Loser !" + game.getScore() );
+                                updateData("Finished - Loser ! " + game.getScore() );
                             }
                         } else {
                             updateTime(getTime());
