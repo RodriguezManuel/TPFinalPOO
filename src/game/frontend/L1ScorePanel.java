@@ -37,8 +37,8 @@ public class L1ScorePanel extends ScorePanel {
 
     private long getRemainingMoves()
     {
-        long maxMoves= ((Level1)game.getGrid()).getMaxMoves();
-        long currentMoves= ((Level1)game.getGrid()).getMoves();
+        long maxMoves = ((Level1)game.getGrid()).getMaxMoves();
+        long currentMoves = game.getGrid().getMoves();
         return  maxMoves - currentMoves;
     }
 
@@ -52,9 +52,5 @@ public class L1ScorePanel extends ScorePanel {
     {
        super.updateData(text);
        updateRemainingMoves();
-       if(game.isFinished())
-       {
-           remainingMovesLabel.setText("");
-       }
     }
 }

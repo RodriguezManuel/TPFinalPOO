@@ -24,10 +24,6 @@ public class L2ScorePanel extends SpecialScorePanel
     public void updateData(String text) {
         super.updateData(text);
         updateCountdown();
-        if(game.isFinished())
-        {
-            countdownLabel.setText("");
-        }
     }
 
     @Override

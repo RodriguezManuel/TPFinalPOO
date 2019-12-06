@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 
 public abstract class SpecialScorePanel extends ScorePanel
 {
-    private static final String SPECIALSLEFTTEXT= "Specials Left: ";
+    private static final String SPECIALSLEFTTEXT = "Specials Left: ";
     private Label specialsLeftLabel;
 
     protected SpecialScorePanel(){
@@ -26,16 +26,13 @@ public abstract class SpecialScorePanel extends ScorePanel
     }
 
     private void updateSpecialsLeft() {
-        int specialsLeft= ((TimeLevel)game.getGrid()).getSpecialsLeft();
-        specialsLeftLabel.setText(SPECIALSLEFTTEXT+specialsLeft);
+        int specialsLeft = ((TimeLevel)game.getGrid()).getSpecialsLeft();
+        specialsLeftLabel.setText(SPECIALSLEFTTEXT + specialsLeft);
     }
 
     @Override
     public void updateData(String text) {
         super.updateData(text);
         updateSpecialsLeft();
-        if(game.isFinished()) {
-            specialsLeftLabel.setText("");
-        }
     }
 }
