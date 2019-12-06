@@ -1,11 +1,8 @@
 package game.backend.level;
 
-import game.backend.Figure;
 import game.backend.GameState;
 import game.backend.cell.Cell;
 import game.backend.cell.L2CandyGeneratorCell;
-import game.backend.cell.TimeCell;
-import game.backend.element.CandyColor;
 import game.backend.element.TimeCandy;
 import game.backend.element.TimeBombCandy;
 
@@ -13,7 +10,7 @@ import java.util.*;
 
 public class Level2 extends TimeLevel {
 
-    private static final int MAX_SPECIAL_CANDY = 10;
+    private static final int MAX_SPECIAL_CANDY = 7;
 
     public Level2(){
         super(MAX_SPECIAL_CANDY);

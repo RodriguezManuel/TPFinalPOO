@@ -13,11 +13,9 @@ import java.util.TimerTask;
 public class L3ScorePanel extends SpecialScorePanel {
 
     private Label timerLabel;
-    private boolean timerSeted;
     public L3ScorePanel()
     {
         super();
-        timerSeted=false;
         setStyle("-fx-background-color: #5490ff");
         timerLabel = new Label();
         timerLabel.setAlignment(Pos.TOP_RIGHT);
@@ -30,25 +28,22 @@ public class L3ScorePanel extends SpecialScorePanel {
                 Platform.runLater(new TimerTask() {
                     @Override
                     public void run() {
-                        if(!timerSeted)
-                        {
-                            TimerManager.setTimer(timer);
-                            timerSeted=true;
-                        }
-                        updateTime( getTime() );
-                        if (game.isFinished() ) {
+                        if (game.isFinished()) {
                             System.out.println("mbeh");
                             timer.cancel();
                             timer.purge();
                             timerLabel.setText("");
-                            if(!game.playerWon()) {
+                            if (!game.playerWon()) {
                                 updateData(" Finished - Loser !");
                             }
+                        } else {
+                            updateTime(getTime());
                         }
                     }
                 });
             }
         }, 0, 1000);
+        TimerManager.setTimer(timer);
     }
 
     private void updateTime( String time ){
@@ -59,21 +54,17 @@ public class L3ScorePanel extends SpecialScorePanel {
         return getMinuteSecondTime( ((Level3)game.getGrid()).getAndDecCountdown() );
     }
 
-    private String getMinuteSecondTime(int time)
-    {
-        String min,sec;
-        int minutes=time/60;
-        int seconds=time%60;
-        min=String.valueOf(minutes);
-        if(seconds<10)
-        {
-          sec="0"+seconds;
+    private String getMinuteSecondTime(int time){
+        String min, sec;
+        int minutes = time / 60;
+        int seconds = time % 60;
+        min = String.valueOf(minutes);
+        if(seconds < 10) {
+          sec = "0" + seconds;
+        } else {
+          sec = String.valueOf(seconds);
         }
-        else
-        {
-          sec= String.valueOf(seconds);
-        }
-        return min+":"+sec;
+        return min + ":" + sec;
     }
 
 

@@ -6,19 +6,16 @@ public class TimerManager
 {
     public static Timer currentTimer;
 
-    public static void setTimer(Timer timer)
-    {
+    public static void setTimer(Timer timer) {
         currentTimer = timer;
-        System.out.println("Timer seted");
+        System.out.println("Timer set");
     }
 
-    public static void closeTimer()
-    {
-        if(currentTimer!=null)
-        {
+    public static void closeTimer() {
+        if(currentTimer != null) {
             currentTimer.cancel();
             currentTimer.purge();
-            currentTimer=null;
+            currentTimer = null;
         }
         System.out.println("Timer closed");
     }

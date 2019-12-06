@@ -3,10 +3,8 @@ package game.frontend;
 import game.backend.level.Level1;
 import game.backend.level.Level2;
 import game.backend.level.Level3;
-import javafx.application.Platform;
 import javafx.scene.control.*;
 
-import javax.swing.*;
 import java.util.Optional;
 
 public class AppMenu extends MenuBar {
@@ -41,12 +39,23 @@ public class AppMenu extends MenuBar {
         MenuItem[] levels = new MenuItem[3];
         for(int i=0;i<3;i++)
         {
-            levels[i] = new MenuItem("Level"+(i+1));
+            levels[i] = new MenuItem("Level " + ( i + 1 ));
             int finalI = i;
         }
-        levels[0].setOnAction(event -> GameApp.startLevel(Level1.class, new L1ScorePanel(), this)); // agregar alertas??
-        levels[1].setOnAction(event -> GameApp.startLevel(Level2.class,new L2ScorePanel(), this));
-        levels[2].setOnAction(event -> GameApp.startLevel(Level3.class,new L3ScorePanel(), this));
+
+        levels[0].setOnAction(event -> {
+            TimerManager.closeTimer();
+            GameApp.startLevel(Level1.class, new L1ScorePanel(), this);
+        }); // agregar alertas??
+        levels[1].setOnAction(event -> {
+            TimerManager.closeTimer();
+            GameApp.startLevel(Level2.class,new L2ScorePanel(), this);
+        });
+        levels[2].setOnAction(event -> {
+            TimerManager.closeTimer();
+            GameApp.startLevel(Level3.class,new L3ScorePanel(), this);
+        });
+
         menuLevels.getItems().addAll(levels);
         getMenus().addAll(file, help, menuLevels);
     }

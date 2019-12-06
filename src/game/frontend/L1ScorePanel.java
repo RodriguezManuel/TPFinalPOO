@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 
 public class L1ScorePanel extends ScorePanel {
 
-    private final String REMAININGMOVESTEXT= "Remaining moves: ";
+    private static final String MOVESLEFTTEXT= "Moves Left: ";
     private Label remainingMovesLabel;
 
     public L1ScorePanel()
@@ -32,7 +32,7 @@ public class L1ScorePanel extends ScorePanel {
 
     private void updateRemainingMoves()
     {
-        remainingMovesLabel.setText(REMAININGMOVESTEXT+getRemainingMoves());
+        remainingMovesLabel.setText(MOVESLEFTTEXT + getRemainingMoves());
     }
 
     private long getRemainingMoves()

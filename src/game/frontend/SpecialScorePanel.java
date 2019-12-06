@@ -1,18 +1,16 @@
 package game.frontend;
 
 import game.backend.CandyGame;
-import game.backend.level.Level1;
 import game.backend.level.TimeLevel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 
 public abstract class SpecialScorePanel extends ScorePanel
 {
-    private final String SPECIALSLEFTTEXT= "Specials left: ";
+    private static final String SPECIALSLEFTTEXT= "Specials Left: ";
     private Label specialsLeftLabel;
 
-    protected SpecialScorePanel()
-    {
+    protected SpecialScorePanel(){
         super();
         setStyle("-fx-background-color: #5490ff");
         specialsLeftLabel = new Label();
@@ -22,25 +20,21 @@ public abstract class SpecialScorePanel extends ScorePanel
     }
 
     @Override
-    public void setGame(CandyGame game)
-    {
+    public void setGame(CandyGame game){
         super.setGame(game);
         updateSpecialsLeft();
     }
 
-    private void updateSpecialsLeft()
-    {
+    private void updateSpecialsLeft() {
         int specialsLeft= ((TimeLevel)game.getGrid()).getSpecialsLeft();
         specialsLeftLabel.setText(SPECIALSLEFTTEXT+specialsLeft);
     }
 
     @Override
-    public void updateData(String text)
-    {
+    public void updateData(String text) {
         super.updateData(text);
         updateSpecialsLeft();
-        if(game.isFinished())
-        {
+        if(game.isFinished()) {
             specialsLeftLabel.setText("");
         }
     }
