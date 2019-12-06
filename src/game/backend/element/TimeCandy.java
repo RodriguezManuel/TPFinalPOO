@@ -2,7 +2,7 @@ package game.backend.element;
 
 import java.util.Objects;
 
-public abstract class TimeCandy extends Candy {
+public abstract class   TimeCandy extends Candy {
     protected int timer;
 
     protected TimeCandy(int timer, CandyColor color) {
@@ -14,11 +14,6 @@ public abstract class TimeCandy extends Candy {
 
     public int getTimer() {
         return timer;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), getTimer());
     }
 
     @Override
