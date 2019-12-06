@@ -81,7 +81,7 @@ public class CandyFrame extends VBox {
 								message = "Finished - Loser ! " + message;
 							}
 						}
-						scorePanel.updateScore(message);
+						scorePanel.updateData(message);
 						lastPoint = null;
 					}
 				}
