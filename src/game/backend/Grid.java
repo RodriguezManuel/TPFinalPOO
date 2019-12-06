@@ -15,7 +15,7 @@ import java.util.Map;
 
 public abstract class Grid {
 	
-	public static final int SIZE = 9;
+	public static final int SIZE = 2;
 
 	private Cell[][] g = new Cell[SIZE][SIZE];
 	private Map<Cell, Point> gMap = new HashMap<>();
@@ -36,6 +36,9 @@ public abstract class Grid {
 	}
 
 	public void initialize() {
+		if(SIZE < 3)
+			throw new IllegalStateException();
+
 		moveMaker = new MoveMaker(this);
 		figureDetector = new FigureDetector(this);
 		for (int i = 0; i < SIZE; i++) {
