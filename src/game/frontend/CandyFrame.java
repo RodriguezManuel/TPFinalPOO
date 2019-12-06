@@ -75,7 +75,6 @@ public class CandyFrame extends VBox {
 					} else {
 						message = "Finished - Loser ! " + message;
 					}
-					scorePanel.updateData(message);
 				}
 			} else {
 				Point2D newPoint = translateCoords(event.getX(), event.getY());
@@ -83,8 +82,11 @@ public class CandyFrame extends VBox {
 					System.out.println("Get second = " + newPoint);
 					game().tryMove((int) lastPoint.getX(), (int) lastPoint.getY(), (int) newPoint.getX(), (int) newPoint.getY());
 					lastPoint = null;
+					message = ((Long) game().getScore()).toString();
 				}
 			}
+
+			scorePanel.updateData(message);
 		});
 
 	}
