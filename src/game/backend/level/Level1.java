@@ -7,13 +7,11 @@ public class Level1 extends Level {
 	private static int REQUIRED_SCORE = 5000; 
 	private static int MAX_MOVES = 20;
 
-	public int getRequiredScore()
-	{
+	public int getRequiredScore() {
 		return REQUIRED_SCORE;
 	}
 
-	public int getMaxMoves()
-	{
+	public int getMaxMoves() {
 		return MAX_MOVES;
 	}
 

@@ -11,6 +11,7 @@ public abstract class ScorePanel extends BorderPane {
 	protected CandyGame game;
 
 	protected ScorePanel() {
+		TimerManager.closeTimer();
 		setStyle("-fx-background-color: #5490ff");
 		scoreLabel = new Label();
 		scoreLabel.setAlignment(Pos.CENTER);

@@ -47,18 +47,9 @@ public class AppMenu extends MenuBar {
             int finalI = i;
         }
 
-        levels[0].setOnAction(event -> {
-            TimerManager.closeTimer();
-            GameApp.startLevel(Level1.class, new L1ScorePanel(), this);
-        }); // agregar alertas??
-        levels[1].setOnAction(event -> {
-            TimerManager.closeTimer();
-            GameApp.startLevel(Level2.class,new L2ScorePanel(), this);
-        });
-        levels[2].setOnAction(event -> {
-            TimerManager.closeTimer();
-            GameApp.startLevel(Level3.class,new L3ScorePanel(), this);
-        });
+        levels[0].setOnAction(event -> { GameApp.startLevel(Level1.class, new L1ScorePanel(), this); }); // agregar alertas??
+        levels[1].setOnAction(event -> { GameApp.startLevel(Level2.class,new L2ScorePanel(), this); });
+        levels[2].setOnAction(event -> { GameApp.startLevel(Level3.class,new L3ScorePanel(), this); });
 
         menuLevels.getItems().addAll(levels);
         getMenus().addAll(file, menuLevels, help);
