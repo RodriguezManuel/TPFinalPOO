@@ -12,6 +12,9 @@ public class Level3 extends TimeLevel {
 
    public Level3(){
        super( MAX_SPECIAL_CANDY );
+       if( INIT_TIME < 0 ){
+           throw new IllegalStateException();
+       }
    }
 
     @Override

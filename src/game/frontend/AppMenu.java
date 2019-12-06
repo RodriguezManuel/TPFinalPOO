@@ -25,6 +25,7 @@ public class AppMenu extends MenuBar {
             }
         });
         file.getItems().add(exitMenuItem);
+
         Menu help = new Menu("Ayuda");
         MenuItem aboutMenuItem = new MenuItem("Acerca De");
         aboutMenuItem.setOnAction(event -> {
@@ -32,9 +33,12 @@ public class AppMenu extends MenuBar {
             alert.setTitle("Acerca De");
             alert.setHeaderText("Candy TPE");
             alert.setContentText("Cátedra POO 2018.\n" +
-                    "Implementación Original: Laura Zabaleta (POO 2013).");
+                    "Implementación Original: Laura Zabaleta (POO 2013).\n" +
+                    "Modificaciones Realizadas Por: Arca, Revich, Rodriguez (POO 2019).");
             alert.showAndWait();
         });
+        help.getItems().add(aboutMenuItem);
+
         Menu menuLevels = new Menu("Levels");
         MenuItem[] levels = new MenuItem[3];
         for(int i=0;i<3;i++)
@@ -57,7 +61,7 @@ public class AppMenu extends MenuBar {
         });
 
         menuLevels.getItems().addAll(levels);
-        getMenus().addAll(file, help, menuLevels);
+        getMenus().addAll(file, menuLevels, help);
     }
 
 }

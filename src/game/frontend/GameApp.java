@@ -45,6 +45,7 @@ public class GameApp extends Application {
 		window.setScene(firstScene);
 		window.setTitle("Candy Crush TP POO 2019_2Q");
 		window.setResizable(false);
+		window.sizeToScene();
 		window.show();
 	}
 
@@ -57,6 +58,7 @@ public class GameApp extends Application {
 		Scene scene = new Scene(frame);
 
 		window.setScene(scene);
+		window.sizeToScene();
 		window.show();
 	}
 
