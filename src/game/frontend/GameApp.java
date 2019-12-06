@@ -26,19 +26,10 @@ public class GameApp extends Application {
 		primaryStage.setOnCloseRequest(event -> System.exit(0));
 
 		Image image = new Image("images/candycrush.png");
-
-		//Setting the image view
 		ImageView imageView = new ImageView(image);
-
-		//menu
 		AppMenu menu = new AppMenu();
-
-		//Creating a Group object
 		BorderPane root = new BorderPane(imageView);
-
 		root.setTop(menu);
-
-		//Creating a scene object
 		firstScene = new Scene(root);
 
 		//display default
