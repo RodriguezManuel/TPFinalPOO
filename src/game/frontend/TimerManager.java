@@ -2,13 +2,11 @@ package game.frontend;
 
 import java.util.Timer;
 
-public class TimerManager
-{
+public class TimerManager {
     public static Timer currentTimer;
 
     public static void setTimer(Timer timer) {
         currentTimer = timer;
-        System.out.println("Timer set");
     }
 
     public static void closeTimer() {
@@ -17,6 +15,5 @@ public class TimerManager
             currentTimer.purge();
             currentTimer = null;
         }
-        System.out.println("Timer closed");
     }
 }

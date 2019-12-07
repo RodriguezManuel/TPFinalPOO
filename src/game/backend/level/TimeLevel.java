@@ -87,8 +87,6 @@ public abstract class TimeLevel extends Level {
 
         @Override
         public boolean gameOver(){
-            System.out.println( "Spawned: " + spawnedSpecials );
-            System.out.println( "Left: " + specialsLeft );
             return playerWon() || countdown == 0;
         }
 

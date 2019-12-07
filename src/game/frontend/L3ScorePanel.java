@@ -29,7 +29,6 @@ public class L3ScorePanel extends SpecialScorePanel {
                     @Override
                     public void run() {
                         if (game.isFinished()) {
-                            System.out.println("mbeh");
                             timer.cancel();
                             timer.purge();
                             timerLabel.setText("");

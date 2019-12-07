@@ -17,28 +17,31 @@ public class Level3 extends TimeLevel {
        }
    }
 
-    @Override
-    public void initialize() {
-        super.initialize();
-        ((Level3.Level3State)state()).resetSpecialsLeft();
-        ((Level3.Level3State)state()).updateCountdown();
-    }
+   @Override
+   public void initialize() {
+       super.initialize();
+       ((Level3.Level3State) state()).resetSpawnedSpecials(); // Es importante que se realize antes del resetSpecialsLeft
+                                                            //pues utiliza cuantos especiales fueron eliminados durante el
+                                                            //proceso de inicializacion.
+       ((Level3.Level3State) state()).resetSpecialsLeft();
+       ((Level3.Level3State) state()).updateCountdown();
+   }
 
-    public int getAndDecCountdown(){
+   public int getAndDecCountdown(){
        return ((Level3State)state()).getAndDecCountdown();
-    }
+   }
 
-    @Override
-    protected GameState newState() {
-        return new Level3State( getQuota() );
-    }
+   @Override
+   protected GameState newState() {
+       return new Level3State( getQuota() );
+   }
 
-    @Override
-    protected Cell getCandyGenerator(){
+   @Override
+   protected Cell getCandyGenerator(){
        return new L3CandyGeneratorCell( this );
-    }
+   }
 
-    protected class Level3State extends SpecialLevelGameState{
+   protected class Level3State extends SpecialLevelGameState{
 
        public Level3State( int candyGoal ) {
            super(candyGoal);
@@ -71,6 +74,10 @@ public class Level3 extends TimeLevel {
        @Override
        protected void updateCountdown() {
             setCountdown(INIT_TIME);
-        }
-    }
+       }
+
+       protected void resetSpawnedSpecials(){
+           setSpawnedSpecials(getSpawnedSpecials() - (getQuota() - getSpecialsLeft()) );
+       }
+   }
 }
