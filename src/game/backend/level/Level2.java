@@ -54,10 +54,6 @@ public class Level2 extends TimeLevel {
             removeTimeBomb( (TimeBombCandy) candy );
         }
 
-        public void resetSpawnedSpecials(){
-            setSpawnedSpecials( activeSpecials.size() );
-        }
-
         @Override
         protected void updateCountdown(){
             if(noActive())

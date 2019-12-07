@@ -94,10 +94,6 @@ public abstract class TimeLevel extends Level {
             specialsLeft--;
         }
 
-        protected void resetSpawnedSpecials(){
-            setSpawnedSpecials(getSpawnedSpecials() - (getQuota() - getSpecialsLeft()) );
-        }
-
         @Override
         public boolean gameOver(){
             return playerWon() || countdown == 0;
@@ -114,8 +110,12 @@ public abstract class TimeLevel extends Level {
 
         protected abstract void updateCountdown();
 
-        protected void resetSpecialsLeft(){
+        private void resetSpecialsLeft(){
             setSpecialsLeft( quota );
+        }
+
+        private void resetSpawnedSpecials(){
+            setSpawnedSpecials(getSpawnedSpecials() - (getQuota() - getSpecialsLeft()) );
         }
     }
 }
