@@ -1,7 +1,5 @@
 package game.backend.element;
 
-import java.util.Objects;
-
 public abstract class   TimeCandy extends Candy {
     protected int timer;
 

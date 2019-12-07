@@ -16,14 +16,6 @@ public class Level2 extends TimeLevel {
         super(MAX_SPECIAL_CANDY);
     }
 
-    @Override
-    public void initialize(){
-        super.initialize();
-        ((Level2State)state()).resetSpawnedSpecials();
-        ((Level2State)state()).resetSpecialsLeft();
-        ((Level2State)state()).updateCountdown();
-    }
-
     public void addSpecial( TimeBombCandy candy ){
         ((Level2State)state()).add( candy );
     }

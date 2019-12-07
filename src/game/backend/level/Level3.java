@@ -8,54 +8,44 @@ import game.backend.element.TimeBonusCandy;
 
 public class Level3 extends TimeLevel {
 
-   public static final int  MAX_SPECIAL_CANDY = 5, INIT_TIME = 60;
+   public static final int  MAX_SPECIAL_CANDY = 5, INIT_TIME = 100;
 
    public Level3(){
        super( MAX_SPECIAL_CANDY );
        if( INIT_TIME < 0 ){
-           throw new IllegalStateException();
+           throw new IllegalStateException("REGLAS DE JUEGO INVÁLIDAS");
        }
    }
 
-   @Override
-   public void initialize() {
-       super.initialize();
-       ((Level3.Level3State) state()).resetSpawnedSpecials(); // Es importante que se realize antes del resetSpecialsLeft
-                                                            //pues utiliza cuantos especiales fueron eliminados durante el
-                                                            //proceso de inicializacion.
-       ((Level3.Level3State) state()).resetSpecialsLeft();
-       ((Level3.Level3State) state()).updateCountdown();
-   }
-
-   public int getAndDecCountdown(){
+    public int getAndDecCountdown(){
        return ((Level3State)state()).getAndDecCountdown();
-   }
+    }
 
-   @Override
-   protected GameState newState() {
-       return new Level3State( getQuota() );
-   }
+    @Override
+    protected GameState newState() {
+        return new Level3State( getQuota() );
+    }
 
-   @Override
-   protected Cell getCandyGenerator(){
+    @Override
+    protected Cell getCandyGenerator(){
        return new L3CandyGeneratorCell( this );
-   }
+    }
 
-   protected class Level3State extends SpecialLevelGameState{
+    protected class Level3State extends SpecialLevelGameState{
 
        public Level3State( int candyGoal ) {
            super(candyGoal);
            setCountdown(INIT_TIME);
        }
 
-       public int getAndDecCountdown(){
+        public int getAndDecCountdown(){
             int aux = getCountdown();
             if(aux == 0)
                 return aux;
 
             setCountdown(aux - 1);
             return getCountdown();
-       }
+        }
 
        private void incCountdown( int time ){
            setCountdown( getCountdown() + time );
@@ -71,13 +61,10 @@ public class Level3 extends TimeLevel {
            incCountdown( candy.getTimer() );
        }
 
-       @Override
-       protected void updateCountdown() {
+        @Override
+        protected void updateCountdown() {
             setCountdown(INIT_TIME);
        }
 
-       protected void resetSpawnedSpecials(){
-           setSpawnedSpecials(getSpawnedSpecials() - (getQuota() - getSpecialsLeft()) );
-       }
    }
 }

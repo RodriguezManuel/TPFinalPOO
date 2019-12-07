@@ -8,13 +8,22 @@ public abstract class TimeLevel extends Level {
 
     private int quota;
 
-    protected TimeLevel( int quota )
-    {
+    protected TimeLevel( int quota ) {
         if(quota <= 0){
-            throw new IllegalStateException();
+            throw new IllegalStateException("REGLAS DE JUEGO INVÁLIDAS");
         }
 
         this.quota = quota;
+    }
+
+    @Override
+    public void initialize(){
+        super.initialize();
+        ((SpecialLevelGameState)state()).resetSpawnedSpecials(); // Es importante que se realice antes del resetSpecialsLeft
+                                                                 //pues utiliza cuántos especiales fueron eliminados durante el
+                                                                 //proceso de inicializacion.
+        ((SpecialLevelGameState)state()).resetSpecialsLeft();
+        ((SpecialLevelGameState)state()).updateCountdown();
     }
 
     @Override
@@ -54,13 +63,13 @@ public abstract class TimeLevel extends Level {
             specialsLeft = candyGoal;
         }
 
-        public abstract void removeSpecial( TimeCandy candy );
+        protected abstract void removeSpecial( TimeCandy candy );
 
         protected void setCountdown( int value ) {
             countdown = value;
         }
 
-        public int getSpecialsLeft()
+        protected int getSpecialsLeft()
         {
             return specialsLeft;
         }
@@ -69,11 +78,11 @@ public abstract class TimeLevel extends Level {
             spawnedSpecials = value;
         }
 
-        public int getSpawnedSpecials(){
+        protected int getSpawnedSpecials(){
             return spawnedSpecials;
         }
 
-        public void incSpawnedSpecials(){
+        protected void incSpawnedSpecials(){
             spawnedSpecials++;
         }
 
@@ -81,8 +90,12 @@ public abstract class TimeLevel extends Level {
             specialsLeft = value;
         }
 
-        public void decSpecialsLeft(){
+        protected void decSpecialsLeft(){
             specialsLeft--;
+        }
+
+        protected void resetSpawnedSpecials(){
+            setSpawnedSpecials(getSpawnedSpecials() - (getQuota() - getSpecialsLeft()) );
         }
 
         @Override

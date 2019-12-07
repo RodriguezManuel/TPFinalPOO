@@ -1,10 +1,7 @@
 package game.frontend;
 
 import game.backend.CandyGame;
-import game.backend.element.Candy;
 import game.backend.level.Level1;
-import game.backend.level.Level3;
-import game.backend.level.TimeLevel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 

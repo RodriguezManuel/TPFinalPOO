@@ -37,7 +37,7 @@ public abstract class Grid {
 
 	public void initialize() {
 		if(SIZE < 3)
-			throw new IllegalStateException();
+			throw new IllegalStateException("TAMAÑO DE GRILLA INVÁLIDO");
 
 		moveMaker = new MoveMaker(this);
 		figureDetector = new FigureDetector(this);
@@ -122,7 +122,7 @@ public abstract class Grid {
 		return null;
 	}
 	
-	protected void removeFigure(int i, int j, Figure f) {
+	private void removeFigure(int i, int j, Figure f) {
 		CandyColor color = ((Candy)get(i, j)).getColor();
 		if (f.hasReplacement()) {
 			setContent(i, j, f.generateReplacement(color));

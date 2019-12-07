@@ -4,8 +4,14 @@ import game.backend.GameState;
 
 public class Level1 extends Level {
 	
-	private static int REQUIRED_SCORE = 5000; 
+	private static int REQUIRED_SCORE = 5000;
 	private static int MAX_MOVES = 20;
+
+	public Level1(){
+		if (REQUIRED_SCORE < 0 || MAX_MOVES < 0){
+			throw new IllegalStateException("REGLAS DE JUEGO INVÁLIDAS");
+		}
+	}
 
 	public int getRequiredScore() {
 		return REQUIRED_SCORE;
@@ -36,7 +42,7 @@ public class Level1 extends Level {
 		}
 		
 		public boolean playerWon() {
-			return getScore() > requiredScore;
+			return getScore() >= requiredScore;
 		}
 	}
 
